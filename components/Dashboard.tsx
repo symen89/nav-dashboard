@@ -39,7 +39,7 @@ export default function Dashboard({ navData, cci30Data, lastUpdated }: Dashboard
 
     if (preset.days) {
       start = Math.max(0, allDates.length - preset.days);
-} else if (preset.year !== undefined) {
+    } else if (preset.year !== undefined) {
       const yearStr = String(preset.year);
       const nextYearStr = String(preset.year + 1);
       start = allDates.findIndex(d => d.startsWith(yearStr));
