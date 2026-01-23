@@ -39,10 +39,11 @@ export default function Dashboard({ navData, cci30Data, lastUpdated }: Dashboard
 
     if (preset.days) {
       start = Math.max(0, allDates.length - preset.days);
-    } else if (preset.year) {
+} else if (preset.year !== undefined) {
       const yearStr = String(preset.year);
+      const nextYearStr = String(preset.year + 1);
       start = allDates.findIndex(d => d.startsWith(yearStr));
-      end = allDates.findIndex(d => d.startsWith(String(preset.year + 1))) - 1;
+      end = allDates.findIndex(d => d.startsWith(nextYearStr)) - 1;
       if (start < 0) start = 0;
       if (end < 0) end = allDates.length - 1;
     } else if (key === 'ytd') {
