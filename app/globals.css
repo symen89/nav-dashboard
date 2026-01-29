@@ -2,18 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
 :root {
+  /* A-DAM Capital color scheme */
+  --adam-bg-dark: #0f151b;
+  --adam-bg-card: #161d26;
+  --adam-bg-hover: #1e2731;
+  --adam-border: #2a3441;
+  --adam-blue-primary: #2098d1;
+  --adam-blue-secondary: #146eb7;
+  --adam-text-white: #ffffff;
+  --adam-text-muted: #8b95a5;
+  --adam-green: #22c55e;
+  --adam-red: #ef4444;
+  --adam-orange: #f97316;
+  
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 15, 23, 42;
-  --background-end-rgb: 15, 23, 42;
+  --background-start-rgb: 15, 21, 27;
+  --background-end-rgb: 15, 21, 27;
 }
 
 body {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--adam-bg-dark);
+}
+
+/* Custom scrollbar for A-DAM theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--adam-bg-card);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--adam-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--adam-text-muted);
 }
