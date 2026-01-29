@@ -1,0 +1,28 @@
+name: Daily Data Sync
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run sync
+        env:
+          GITHUB_TOKEN: ${{ secrets.NAV_API_TOKEN }}
+        run: node scripts/sync-data.js
+      - name: Commit changes
+        run: |
+          git diff --quiet lib/*.json || (
+            git config user.email "actions@github.com"
+            git config user.name "GitHub Actions"
+            git add lib/*.json
+            git commit -m "Daily data update"
+            git push
+          )
