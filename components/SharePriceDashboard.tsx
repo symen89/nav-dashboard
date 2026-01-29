@@ -160,6 +160,69 @@ export default function SharePriceDashboard() {
     const shiftedLastDate = lastIdx > 0 ? filteredDates[lastIdx - 1] : filteredDates[0];
     const cci30End = CCI30_DATA[shiftedLastDate] || cci30Start;
 
+    // Calculate Max Drawdown
+    let maxDrawdown = 0;
+    let peak = prices[0];
+    for (const price of prices) {
+      if (price > peak) peak = price;
+      const drawdown = ((peak - price) / peak) * 100;
+      if (drawdown > maxDrawdown) maxDrawdown = drawdown;
+    }
+
+    // Calculate daily returns for volatility & Sharpe
+    const dailyReturns: number[] = [];
+    for (let i = 1; i < prices.length; i++) {
+      dailyReturns.push((prices[i] - prices[i-1]) / prices[i-1]);
+    }
+    
+    // Volatility (annualized, assuming 365 days)
+    const avgReturn = dailyReturns.reduce((a, b) => a + b, 0) / dailyReturns.length;
+    const variance = dailyReturns.reduce((sum, r) => sum + Math.pow(r - avgReturn, 2), 0) / dailyReturns.length;
+    const dailyVol = Math.sqrt(variance);
+    const annualizedVol = dailyVol * Math.sqrt(365) * 100;
+
+    // Sharpe Ratio (assuming 0% risk-free rate for crypto)
+    const annualizedReturn = avgReturn * 365;
+    const sharpeRatio = annualizedVol > 0 ? (annualizedReturn / (dailyVol * Math.sqrt(365))) : 0;
+
+    // Win rate (% of days with positive return)
+    const winningDays = dailyReturns.filter(r => r > 0).length;
+    const winRate = (winningDays / dailyReturns.length) * 100;
+
+    // Beta & Correlation vs CCI30
+    const cci30Returns: number[] = [];
+    const navReturnsForCorr: number[] = [];
+    for (let i = 1; i < filteredDates.length; i++) {
+      const prevDate = filteredDates[i - 1];
+      const currDate = filteredDates[i];
+      const prevCCI = CCI30_DATA[prevDate];
+      const currCCI = CCI30_DATA[currDate];
+      if (prevCCI && currCCI) {
+        cci30Returns.push((currCCI - prevCCI) / prevCCI);
+        navReturnsForCorr.push(dailyReturns[i - 1] || 0);
+      }
+    }
+
+    let beta = 0;
+    let correlation = 0;
+    if (cci30Returns.length > 1) {
+      const avgNav = navReturnsForCorr.reduce((a, b) => a + b, 0) / navReturnsForCorr.length;
+      const avgCCI = cci30Returns.reduce((a, b) => a + b, 0) / cci30Returns.length;
+      let covariance = 0;
+      let varCCI = 0;
+      let varNav = 0;
+      for (let i = 0; i < cci30Returns.length; i++) {
+        covariance += (navReturnsForCorr[i] - avgNav) * (cci30Returns[i] - avgCCI);
+        varCCI += Math.pow(cci30Returns[i] - avgCCI, 2);
+        varNav += Math.pow(navReturnsForCorr[i] - avgNav, 2);
+      }
+      covariance /= cci30Returns.length;
+      varCCI /= cci30Returns.length;
+      varNav /= cci30Returns.length;
+      beta = varCCI > 0 ? covariance / varCCI : 0;
+      correlation = (varCCI > 0 && varNav > 0) ? covariance / (Math.sqrt(varCCI) * Math.sqrt(varNav)) : 0;
+    }
+
     return {
       chartData: data,
       stats: {
@@ -173,6 +236,12 @@ export default function SharePriceDashboard() {
         days: filteredDates.length,
         startDate: filteredDates[0],
         endDate: filteredDates[filteredDates.length - 1],
+        maxDrawdown,
+        volatility: annualizedVol,
+        sharpeRatio,
+        winRate,
+        beta,
+        correlation,
       }
     };
   }, [rangeStart, rangeEnd, allDates]);
@@ -222,6 +291,36 @@ export default function SharePriceDashboard() {
             <p className={`text-xl font-bold ${stats.alpha >= 0 ? 'text-green-400' : 'text-[#ef4444]'}`}>
               {formatPct(stats.alpha)}
             </p>
+          </div>
+        </div>
+
+        {/* Advanced Stats */}
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-4">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
+            <p className="text-[#8b95a5] text-xs">Max Drawdown</p>
+            <p className="text-lg font-bold text-[#ef4444]">-{stats.maxDrawdown.toFixed(1)}%</p>
+          </div>
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
+            <p className="text-[#8b95a5] text-xs">Volatiliteit</p>
+            <p className="text-lg font-bold text-[#f97316]">{stats.volatility.toFixed(1)}%</p>
+          </div>
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
+            <p className="text-[#8b95a5] text-xs">Sharpe Ratio</p>
+            <p className={`text-lg font-bold ${stats.sharpeRatio >= 0 ? 'text-green-400' : 'text-[#ef4444]'}`}>
+              {stats.sharpeRatio.toFixed(2)}
+            </p>
+          </div>
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
+            <p className="text-[#8b95a5] text-xs">Win Rate</p>
+            <p className="text-lg font-bold text-[#2098d1]">{stats.winRate.toFixed(0)}%</p>
+          </div>
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
+            <p className="text-[#8b95a5] text-xs">Beta vs CCI30</p>
+            <p className="text-lg font-bold text-white">{stats.beta.toFixed(2)}</p>
+          </div>
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
+            <p className="text-[#8b95a5] text-xs">Correlatie</p>
+            <p className="text-lg font-bold text-white">{(stats.correlation * 100).toFixed(0)}%</p>
           </div>
         </div>
 
