@@ -72,6 +72,16 @@ export default function SharePriceDashboard() {
   const [startDateInput, setStartDateInput] = useState(allDates[0]);
   const [endDateInput, setEndDateInput] = useState(allDates[allDates.length - 1]);
 
+  // Helper to find date index X months ago
+  const getDateMonthsAgo = (months: number): number => {
+    const lastDate = new Date(allDates[allDates.length - 1]);
+    const targetDate = new Date(lastDate);
+    targetDate.setMonth(targetDate.getMonth() - months);
+    const targetStr = targetDate.toISOString().split('T')[0];
+    const idx = allDates.findIndex(d => d >= targetStr);
+    return idx !== -1 ? idx : 0;
+  };
+
   // Preset periods
   const presets = [
     { label: 'Alles', start: 0, end: allDates.length - 1 },
@@ -79,9 +89,9 @@ export default function SharePriceDashboard() {
     { label: '2025', start: allDates.findIndex(d => d >= '2025-01-01'), end: allDates.findIndex(d => d >= '2026-01-01') - 1 },
     { label: '2024', start: allDates.findIndex(d => d >= '2024-01-01'), end: allDates.findIndex(d => d >= '2025-01-01') - 1 },
     { label: '2023', start: allDates.findIndex(d => d >= '2023-01-01'), end: allDates.findIndex(d => d >= '2024-01-01') - 1 },
-    { label: '6M', start: Math.max(0, allDates.length - 26), end: allDates.length - 1 },
-    { label: '3M', start: Math.max(0, allDates.length - 13), end: allDates.length - 1 },
-    { label: '1M', start: Math.max(0, allDates.length - 5), end: allDates.length - 1 },
+    { label: '6M', start: getDateMonthsAgo(6), end: allDates.length - 1 },
+    { label: '3M', start: getDateMonthsAgo(3), end: allDates.length - 1 },
+    { label: '1M', start: getDateMonthsAgo(1), end: allDates.length - 1 },
   ];
 
   const applyPreset = (preset: { label: string; start: number; end: number }) => {
@@ -124,8 +134,11 @@ export default function SharePriceDashboard() {
     const basePrice = SHARE_PRICES[baseDate];
     const baseCCI30 = CCI30_DATA[baseDate] || CCI30_DATA[allDates.find(d => CCI30_DATA[d] && d >= baseDate) || ''];
 
-    const data = filteredDates.map(date => {
-      const cci30Value = CCI30_DATA[date];
+    const data = filteredDates.map((date, idx) => {
+      // CCI30 data is shifted 1 day forward to align with NAV timing
+      // (NAV reacts ~1 day after market movements)
+      const prevDate = idx > 0 ? filteredDates[idx - 1] : date;
+      const cci30Value = CCI30_DATA[prevDate];
       return {
         date,
         displayDate: new Date(date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' }),
@@ -141,9 +154,11 @@ export default function SharePriceDashboard() {
     const maxPrice = Math.max(...prices);
     const minPrice = Math.min(...prices);
 
+    // CCI30 stats also shifted by 1 day to match the chart alignment
     const cci30Start = baseCCI30;
-    const lastCCI30Date = [...filteredDates].reverse().find(d => CCI30_DATA[d]);
-    const cci30End = CCI30_DATA[lastCCI30Date || ''] || cci30Start;
+    const lastIdx = filteredDates.length - 1;
+    const shiftedLastDate = lastIdx > 0 ? filteredDates[lastIdx - 1] : filteredDates[0];
+    const cci30End = CCI30_DATA[shiftedLastDate] || cci30Start;
 
     return {
       chartData: data,
