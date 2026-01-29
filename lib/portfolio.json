@@ -1,0 +1,54 @@
+{
+  "networth_usd": "292297.209203534516982685097007677314",
+  "lastUpdated": "1769722192272",
+  "holdings": [
+    {
+      "symbol": "ETH",
+      "name": "ethereum",
+      "balance": "0.010530731758383112",
+      "img": "https://images.octav.fi/chains/ethereum_icon.svg"
+    },
+    {
+      "symbol": "EUROC",
+      "name": "euro coin",
+      "balance": "1543.074208",
+      "img": "https://images.octav.fi/tokens/small/0x1abaea1f7c830bd89acc67ec4af516284b1bc33c_small_icon.png"
+    },
+    {
+      "symbol": "WBTC",
+      "name": "wrapped bitcoin",
+      "balance": "1.0027028",
+      "img": "https://images.octav.fi/tokens/small/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599_small_icon.png"
+    },
+    {
+      "symbol": "POL",
+      "name": "polygon ecosystem token",
+      "balance": "20168.277181443613",
+      "img": "https://images.octav.fi/tokens/small/NoImageAvailable_small.png"
+    },
+    {
+      "symbol": "LINK",
+      "name": "chainlink",
+      "balance": "2275.9767557868612",
+      "img": "https://images.octav.fi/tokens/small/0x514910771af9ca656af840dff83e8264ecf986ca_small_icon.png"
+    },
+    {
+      "symbol": "WTAO",
+      "name": "wrapped tao",
+      "balance": "52.9954973",
+      "img": "https://images.octav.fi/tokens/small/wtao_logo_758042fd-ead0-45a2-af1b-bf0c20ae2fbc.png"
+    },
+    {
+      "symbol": "WETH",
+      "name": "weth",
+      "balance": "55.49150829347446",
+      "img": "https://images.octav.fi/tokens/small/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2_small_icon.png"
+    },
+    {
+      "symbol": "MLN",
+      "name": "enzyme",
+      "balance": "56.42812305335154",
+      "img": "https://images.octav.fi/tokens/small/0xec67005c4e498ec7f55e092bd1d35cbc47c91892_small_icon.png"
+    }
+  ]
+}
