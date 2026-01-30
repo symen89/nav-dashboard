@@ -75,11 +75,11 @@ const MONTH_END_NAV = [
 
 const MONTH_NAMES = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
 
-// Tooltip component
+// Tooltip component - appears below on mobile to avoid overflow
 const InfoTooltip = ({ text }: { text: string }) => (
   <span className="relative inline-block ml-1 group">
     <span className="cursor-help text-[#6b7585] hover:text-[#2098d1] text-xs">ⓘ</span>
-    <span className="absolute bottom-full right-0 mb-2 px-3 py-2 text-xs text-[#0f151b] bg-white border border-[#e5e7eb] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg w-48 sm:w-56 leading-relaxed">
+    <span className="fixed sm:absolute top-auto sm:top-full left-4 right-4 sm:left-auto sm:right-0 mt-1 sm:mt-2 px-3 py-2 text-xs text-[#0f151b] bg-white border border-[#e5e7eb] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg sm:w-56 leading-relaxed">
       {text}
     </span>
   </span>
