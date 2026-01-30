@@ -631,7 +631,6 @@ export default function SharePriceDashboard() {
           Bron: historic_nav + adam-nav-api • CCI30: cci30.com • Portfolio: octav.fi
         </p>
       </div>
-      </div>
     </div>
   );
 }
