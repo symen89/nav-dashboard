@@ -149,6 +149,156 @@
       .content { padding: 25px; }
       h2 { font-size: 20px; }
     }
+
+    /* ===== FLYOVER ANIMATIONS ===== */
+    
+    /* Base states - hidden before animation */
+    .animate-fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .animate-fade-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .animate-fade-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .animate-scale-in {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    /* Animated state - visible */
+    .animate-fade-up.is-visible,
+    .animate-fade-left.is-visible,
+    .animate-fade-right.is-visible,
+    .animate-scale-in.is-visible {
+      opacity: 1;
+      transform: translateY(0) translateX(0) scale(1);
+    }
+    
+    /* Staggered list items */
+    .animate-stagger li {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .animate-stagger.is-visible li:nth-child(1) { transition-delay: 0.1s; }
+    .animate-stagger.is-visible li:nth-child(2) { transition-delay: 0.2s; }
+    .animate-stagger.is-visible li:nth-child(3) { transition-delay: 0.3s; }
+    .animate-stagger.is-visible li:nth-child(4) { transition-delay: 0.4s; }
+    .animate-stagger.is-visible li:nth-child(5) { transition-delay: 0.5s; }
+    .animate-stagger.is-visible li:nth-child(6) { transition-delay: 0.6s; }
+    
+    .animate-stagger.is-visible li {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    /* Header special animations */
+    .header {
+      overflow: hidden;
+    }
+    
+    .header img {
+      animation: float-down 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+    
+    .header h1 {
+      animation: reveal-text 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+      opacity: 0;
+    }
+    
+    .header .subtitle {
+      animation: reveal-text 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+      opacity: 0;
+    }
+    
+    .header .date {
+      animation: reveal-text 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+      opacity: 0;
+    }
+    
+    @keyframes float-down {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes reveal-text {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Highlight box glow effect */
+    .highlight-box {
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+    }
+    
+    .highlight-box:hover {
+      box-shadow: 0 8px 30px rgba(32, 152, 209, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    /* CTA button pulse */
+    .cta-button {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(32, 152, 209, 0.4);
+    }
+    
+    /* Divider animation */
+    .divider {
+      transform: scaleX(0);
+      transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .divider.is-visible {
+      transform: scaleX(1);
+    }
+    
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -161,86 +311,86 @@
     </div>
     
     <div class="content">
-      <p class="intro">
+      <p class="intro animate-fade-up">
         Januari bracht prijsvolatiliteit door geopolitieke spanningen, maar achter de schermen bouwden grote financiële instellingen gestaag aan crypto-infrastructuur. Morgan Stanley, Fidelity en Tether zetten belangrijke stappen, terwijl Strategy haar Bitcoin-positie fors uitbreidde.
       </p>
 
-      <h2>📊 Marktbeeld</h2>
+      <h2 class="animate-fade-left">📊 Marktbeeld</h2>
       
       <p>Bitcoin schommelde deze maand tussen $88.000 en $98.000. Halverwege januari piekte de koers kort boven de $98.000, om daarna terug te zakken naar de niveaus van eind december. De bewegingen werden gedreven door een combinatie van macro-economische factoren en geopolitieke onrust.</p>
       
       <p>De Federal Reserve hield de rente stabiel op 3,5-3,75%, zoals verwacht. Toch bleef onzekerheid overheersen. Spanningen rond het Amerikaanse handelsbeleid — met name dreigende importheffingen op Europa en uitspraken over Groenland — zorgden voor nervositeit. Toen deze heffingen later werden ingetrokken, keerde enige rust terug, maar het vertrouwen bleef kwetsbaar.</p>
 
-      <div class="highlight-box">
+      <div class="highlight-box animate-scale-in">
         <h4>📉 ETF-stromen Onder Druk</h4>
         <p>De spot crypto-ETF's beleefden een turbulente maand. Bitcoin-fondsen noteerden op één dag een uitstroom van $817,8 miljoen — de vierde grootste uitstroomdag sinds de lancering. Ethereum-fondsen verloren $155,7 miljoen. Begin en eind januari waren de flows positief, maar tijdens de macro-onrust keerden beleggers de markt tijdelijk de rug toe.</p>
       </div>
 
-      <h3>Onzekerheid Rond de Fed</h3>
+      <h3 class="animate-fade-right">Onzekerheid Rond de Fed</h3>
       <p>Fed-voorzitter Jerome Powell kwam onder vuur te liggen via een strafrechtelijk onderzoek, wat de politieke druk op het rentebeleid verhoogde. Daarnaast groeide speculatie over Kevin Warsh als mogelijke opvolger van Powell. Warsh staat bekend om zijn strenge anti-inflatiehouding, wat beleggers nerveus maakt over toekomstig liquiditeitsbeleid. Minder ruime monetaire condities betekenen doorgaans minder kapitaal voor risicovolle assets zoals crypto.</p>
 
       <p>Tegelijkertijd kondigde Trump een plan aan om $200 miljard aan hypotheekobligaties op te kopen om woonlasten te drukken — een onconventionele maatregel die de liquiditeit in de markt kan vergroten, maar ook vragen oproept over de scheiding tussen overheidsbeleid en centrale bankbeleid.</p>
 
       <div class="divider"></div>
 
-      <h2>🏛️ Institutionele Doorbraken</h2>
+      <h2 class="animate-fade-left">🏛️ Institutionele Doorbraken</h2>
       
-      <p>Ondanks de prijsschommelingen zette de institutionele adoptie door. Januari leverde concrete mijlpalen op:</p>
+      <p class="animate-fade-up">Ondanks de prijsschommelingen zette de institutionele adoptie door. Januari leverde concrete mijlpalen op:</p>
 
-      <ul>
+      <ul class="animate-stagger">
         <li><strong>Morgan Stanley</strong> werd de eerste grote Amerikaanse bank die aanvragen indiende voor eigen spot crypto-ETF's op bitcoin en ethereum. De bank wil niet langer alleen producten van derden doorverkopen, maar zelf verdienen aan transactiestromen en crypto-advies.</li>
         <li><strong>Fidelity</strong> introduceerde een eigen stablecoin, gericht op institutionele verrekening en treasury-operaties. Stablecoins functioneren steeds vaker als basislaag voor financiële infrastructuur — ze bieden continue verplaatsbaarheid van waarde zonder de volatiliteit van crypto.</li>
         <li><strong>Strategy</strong> (het voormalige MicroStrategy) kocht voor circa $2,1 miljard aan Bitcoin — de grootste aankoop van het bedrijf sinds 2024. De timing tijdens de koerscorrectie was opvallend; de aankoop werd grotendeels gefinancierd via aandelenuitgifte.</li>
         <li><strong>Tether</strong> breidde zijn goudpositie verder uit en werd daarmee de grootste niet-overheidsbezitter van fysiek goud ter wereld. De reserves dienen zowel het bedrijf zelf als de dekking van Tether Gold (XAUT), een token die de goudprijs volgt. Deze diversificatie naast Amerikaanse staatsobligaties weerspiegelt een bredere trend naar hard asset backing.</li>
       </ul>
 
-      <h3>NYSE Bouwt aan Tokenized Securities</h3>
-      <p>De New York Stock Exchange werkt aan een platform voor tokenized effecten dat continue handel in Amerikaanse aandelen mogelijk moet maken. De belofte: snellere afwikkeling, toegang buiten reguliere beursuren, en de mogelijkheid om fractionele aandelen te verhandelen. Voor grote beleggers is vooral de combinatie van continue liquiditeit en efficiëntere settlement interessant.</p>
+      <h3 class="animate-fade-right">NYSE Bouwt aan Tokenized Securities</h3>
+      <p class="animate-fade-up">De New York Stock Exchange werkt aan een platform voor tokenized effecten dat continue handel in Amerikaanse aandelen mogelijk moet maken. De belofte: snellere afwikkeling, toegang buiten reguliere beursuren, en de mogelijkheid om fractionele aandelen te verhandelen. Voor grote beleggers is vooral de combinatie van continue liquiditeit en efficiëntere settlement interessant.</p>
 
       <div class="divider"></div>
 
-      <h2>⚖️ Regelgeving in Beweging</h2>
+      <h2 class="animate-fade-left">⚖️ Regelgeving in Beweging</h2>
       
       <p>De Amerikaanse Clarity Act — een wet die duidelijkheid moet scheppen over de classificatie van crypto-assets — naderde een stemming in de Senaat. Na kritiek van Coinbase-CEO Brian Armstrong werd de timing aangepast, maar goedkeuring wordt nog steeds binnen enkele weken verwacht. De wet moet helderheid bieden over welke toezichthouder waarvoor verantwoordelijk is en welke regels gelden voor handelsplatformen.</p>
 
-      <h3>Davos: Crypto Op De Agenda</h3>
-      <p>Op het World Economic Forum in Davos stonden digitale assets prominent op de agenda. Het gesprek draaide niet langer om de vraag óf crypto een plek krijgt in het financiële systeem, maar om de praktische implementatie. Stablecoins als betaalinfrastructuur en de tokenisatie van traditionele assets domineerden de discussies. Wanneer beleidsmakers en grote vermogensbeheerders dit onderwerp structureel bespreken, is dat een signaal dat de sector volwassener wordt.</p>
+      <h3 class="animate-fade-right">Davos: Crypto Op De Agenda</h3>
+      <p class="animate-fade-up">Op het World Economic Forum in Davos stonden digitale assets prominent op de agenda. Het gesprek draaide niet langer om de vraag óf crypto een plek krijgt in het financiële systeem, maar om de praktische implementatie. Stablecoins als betaalinfrastructuur en de tokenisatie van traditionele assets domineerden de discussies. Wanneer beleidsmakers en grote vermogensbeheerders dit onderwerp structureel bespreken, is dat een signaal dat de sector volwassener wordt.</p>
 
       <div class="divider"></div>
 
-      <h2>🔗 Technologie & Netwerken</h2>
+      <h2 class="animate-fade-left">🔗 Technologie & Netwerken</h2>
 
-      <div class="highlight-box">
+      <div class="highlight-box animate-scale-in">
         <h4>Ethereum Bereikt Nieuwe Pieken</h4>
         <p>Het Ethereum-netwerk verwerkte begin januari meer dan 2,2 miljoen transacties per dag. Op 16 januari werd zelfs bijna 2,9 miljoen transacties bereikt — een nieuw record. Opmerkelijk: de transactiekosten bleven relatief laag, wat laat zien dat de schaalbaarheidsupgrades en layer-2 oplossingen hun werk doen.</p>
       </div>
 
-      <h3>Technische Vooruitgang</h3>
+      <h3 class="animate-fade-right">Technische Vooruitgang</h3>
       <p>Ethereum-oprichter Vitalik Buterin claimde dat het bekende blockchain-trilemma — de afweging tussen decentralisatie, veiligheid en schaalbaarheid — nu in de praktijk is opgelost. Twee technologieën maken dit mogelijk: PeerDAS (Peer Data Availability Sampling), dat grotere datavolumes aankan zonder decentralisatie op te offeren, en ZK-EVMs (Zero-Knowledge Ethereum Virtual Machines), die smart contracts efficiënter uitvoeren via cryptografische bewijzen.</p>
 
       <div class="divider"></div>
 
-      <h2>💎 Asset Developments</h2>
+      <h2 class="animate-fade-left">💎 Asset Developments</h2>
       
-      <p>De belangrijkste ontwikkelingen binnen onze portfolio-assets:</p>
+      <p class="animate-fade-up">De belangrijkste ontwikkelingen binnen onze portfolio-assets:</p>
 
-      <h3>Ethereum (ETH)</h3>
+      <h3 class="animate-fade-right">Ethereum (ETH)</h3>
       <p>Naast de transactierecords profiteert Ethereum van technologische vooruitgang en groeiende layer-2 adoptie. Het netwerk evolueert van puur technologisch verhaal naar werkpaard voor DeFi, stablecoins en tokenized assets. De combinatie van mainnet-veiligheid en L2-efficiëntie trekt zowel retail als institutionele gebruikers.</p>
 
-      <h3>Bitcoin (BTC)</h3>
-      <p>De aankoop van Strategy ($2,1 miljard) toont dat grote partijen koerscorrecties benutten om posities uit te breiden. Tegelijk blijft Bitcoin gevoelig voor macro-factoren: Fed-beleid, liquiditeitsverwachtingen en geopolitieke spanningen sturen de koers. De ETF-infrastructuur zorgt voor professionelere prijsvorming, maar maakt de markt ook reactiever op institutionele flows.</p>
+      <h3 class="animate-fade-right">Bitcoin (BTC)</h3>
+      <p class="animate-fade-up">De aankoop van Strategy ($2,1 miljard) toont dat grote partijen koerscorrecties benutten om posities uit te breiden. Tegelijk blijft Bitcoin gevoelig voor macro-factoren: Fed-beleid, liquiditeitsverwachtingen en geopolitieke spanningen sturen de koers. De ETF-infrastructuur zorgt voor professionelere prijsvorming, maar maakt de markt ook reactiever op institutionele flows.</p>
 
-      <h3>Chainlink (LINK)</h3>
-      <p>Chainlink lanceerde op 20 januari 24/5 U.S. Equities Streams — realtime koersdata voor Amerikaanse aandelen, 24 uur per dag, 5 dagen per week. Dit maakt de $80 biljoen grote aandelenmarkt toegankelijk voor DeFi-toepassingen. Met NYSE's plannen voor tokenized securities groeit de relevantie van Chainlink's oracle-netwerk als brug tussen traditionele en digitale markten.</p>
+      <h3 class="animate-fade-right">Chainlink (LINK)</h3>
+      <p class="animate-fade-up">Chainlink lanceerde op 20 januari 24/5 U.S. Equities Streams — realtime koersdata voor Amerikaanse aandelen, 24 uur per dag, 5 dagen per week. Dit maakt de $80 biljoen grote aandelenmarkt toegankelijk voor DeFi-toepassingen. Met NYSE's plannen voor tokenized securities groeit de relevantie van Chainlink's oracle-netwerk als brug tussen traditionele en digitale markten.</p>
 
-      <h3>Bittensor (TAO)</h3>
-      <p>Bittensor blijft profiteren van de aanhoudende interesse in de kruising tussen AI en crypto. Het gedecentraliseerde machine learning netwerk zag in januari verdere groei in het aantal actieve subnets en validators. De combinatie van schaarse tokenomics en de structurele trend richting decentrale AI-infrastructuur maakt TAO een interessante positie voor beleggers die exposure zoeken naar de AI-narratief binnen crypto.</p>
+      <h3 class="animate-fade-right">Bittensor (TAO)</h3>
+      <p class="animate-fade-up">Bittensor blijft profiteren van de aanhoudende interesse in de kruising tussen AI en crypto. Het gedecentraliseerde machine learning netwerk zag in januari verdere groei in het aantal actieve subnets en validators. De combinatie van schaarse tokenomics en de structurele trend richting decentrale AI-infrastructuur maakt TAO een interessante positie voor beleggers die exposure zoeken naar de AI-narratief binnen crypto.</p>
 
       <div class="divider"></div>
 
-      <h2>🔮 Wat We Volgen</h2>
+      <h2 class="animate-fade-left">🔮 Wat We Volgen</h2>
       
-      <ul>
+      <ul class="animate-stagger">
         <li><strong>Clarity Act:</strong> Goedkeuring kan juridische onzekerheid wegnemen en institutionele adoptie versnellen. Verwacht binnen weken.</li>
         <li><strong>Fed-dynamiek:</strong> De spanning tussen politieke druk en centrale-bank onafhankelijkheid blijft een risicofactor. Eventuele wijzigingen in de Fed-top kunnen impact hebben op liquiditeitsverwachtingen.</li>
         <li><strong>Institutionele bouwstenen:</strong> Morgan Stanley, Fidelity en Tether leggen de infrastructuur voor bredere adoptie. Deze ontwikkelingen zijn structureel belangrijker dan dagelijkse koersbewegingen.</li>
@@ -248,7 +398,7 @@
         <li><strong>AI x Crypto:</strong> Nieuwe standaarden zoals ERC-8004 (native asset swaps) en x402 (HTTP micropayments) leggen de basis voor autonome AI-agents die zelfstandig kunnen handelen en betalen. Deze infrastructuur wordt cruciaal naarmate AI en blockchain verder integreren.</li>
       </ul>
 
-      <div class="cta-section">
+      <div class="cta-section animate-scale-in">
         <h3>Interesse in A-DAM Capital?</h3>
         <p>Neem contact op voor meer informatie over ons fonds en de mogelijkheden.</p>
         <a href="https://adamcapital.nl/contact" class="cta-button">Contact Opnemen</a>
@@ -271,5 +421,33 @@
       </p>
     </div>
   </div>
+  <script>
+    // Intersection Observer for scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll(
+        '.animate-fade-up, .animate-fade-left, .animate-fade-right, .animate-scale-in, .animate-stagger, .divider'
+      );
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80px 0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // Unobserve after animation (optional - keeps animation from replaying)
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      animatedElements.forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
 </body>
 </html>
