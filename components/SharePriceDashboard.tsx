@@ -302,10 +302,20 @@ export default function SharePriceDashboard() {
   return (
     <div className="p-4 min-h-screen text-[#0f151b] bg-[#f4f4f4]">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-2xl font-bold mb-1 text-[#0f151b]">A-DAM Capital Share Price</h1>
-        <p className="text-[#6b7585] text-sm mb-4">
-          {formatDate(stats.startDate)} - {formatDate(stats.endDate)} ({stats.days} datapunten)
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div>
+            <h1 className="text-2xl font-bold mb-1 text-[#0f151b]">A-DAM Capital Share Price</h1>
+            <p className="text-[#6b7585] text-sm">
+              {formatDate(stats.startDate)} - {formatDate(stats.endDate)} ({stats.days} datapunten)
+            </p>
+          </div>
+          <a 
+            href="/monthly-update-jan-2026.html" 
+            className="px-4 py-2 bg-[#2098d1] text-white rounded-lg text-sm font-medium hover:bg-[#1a7ab0] transition-colors"
+          >
+            📰 Laatste Newsletter
+          </a>
+        </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
