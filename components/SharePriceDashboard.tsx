@@ -75,6 +75,30 @@ const MONTH_END_NAV = [
 
 const MONTH_NAMES = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
 
+// Tooltip component
+const InfoTooltip = ({ text }: { text: string }) => (
+  <span className="relative inline-block ml-1 group">
+    <span className="cursor-help text-[#6b7585] hover:text-[#8b95a5] text-xs">ⓘ</span>
+    <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 text-xs text-white bg-[#1e2731] border border-[#3a4451] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap z-50 shadow-lg max-w-xs text-left">
+      {text}
+    </span>
+  </span>
+);
+
+// Stat tooltips
+const STAT_TOOLTIPS: Record<string, string> = {
+  startPrice: 'De NAV (Net Asset Value) per participatie aan het begin van de geselecteerde periode.',
+  endPrice: 'De huidige NAV per participatie aan het eind van de geselecteerde periode.',
+  navReturn: 'Het totaalrendement van het fonds over de geselecteerde periode, berekend als (eindprijs - startprijs) / startprijs.',
+  alpha: 'Outperformance ten opzichte van de CCI30 benchmark. Positief = beter dan de markt.',
+  maxDrawdown: 'De grootste piek-naar-dal daling in de geselecteerde periode. Meet het maximale verlies.',
+  volatility: 'Geannualiseerde standaarddeviatie van dagelijkse rendementen. Hogere waarde = meer koersschommelingen.',
+  sharpeRatio: 'Rendement per eenheid risico. Hoger = beter risico-gecorrigeerd rendement. >1 is goed, >2 is excellent.',
+  winRate: 'Percentage dagen met positief rendement in de geselecteerde periode.',
+  beta: 'Gevoeligheid voor marktbewegingen. Beta 1 = beweegt gelijk met markt, <1 = defensiever, >1 = agressiever.',
+  correlation: 'Mate waarin het fonds meebeweegt met de CCI30 index. 100% = perfecte correlatie.',
+};
+
 export default function SharePriceDashboard() {
   const allDates = useMemo(() => Object.keys(SHARE_PRICES).sort(), []);
 
@@ -286,21 +310,21 @@ export default function SharePriceDashboard() {
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
           <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
-            <p className="text-[#8b95a5] text-xs">Startprijs</p>
+            <p className="text-[#8b95a5] text-xs">Startprijs<InfoTooltip text={STAT_TOOLTIPS.startPrice} /></p>
             <p className="text-xl font-bold text-white">{formatEUR(stats.startPrice)}</p>
           </div>
           <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
-            <p className="text-[#8b95a5] text-xs">Eindprijs</p>
+            <p className="text-[#8b95a5] text-xs">Eindprijs<InfoTooltip text={STAT_TOOLTIPS.endPrice} /></p>
             <p className="text-xl font-bold text-white">{formatEUR(stats.endPrice)}</p>
           </div>
           <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
-            <p className="text-[#8b95a5] text-xs">NAV Return</p>
+            <p className="text-[#8b95a5] text-xs">NAV Return<InfoTooltip text={STAT_TOOLTIPS.navReturn} /></p>
             <p className={`text-xl font-bold ${stats.navReturn >= 0 ? 'text-green-400' : 'text-[#ef4444]'}`}>
               {formatPct(stats.navReturn)}
             </p>
           </div>
           <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
-            <p className="text-[#8b95a5] text-xs">Alpha vs CCI30</p>
+            <p className="text-[#8b95a5] text-xs">Alpha vs CCI30<InfoTooltip text={STAT_TOOLTIPS.alpha} /></p>
             <p className={`text-xl font-bold ${stats.alpha >= 0 ? 'text-green-400' : 'text-[#ef4444]'}`}>
               {formatPct(stats.alpha)}
             </p>
@@ -310,29 +334,29 @@ export default function SharePriceDashboard() {
         {/* Advanced Stats */}
         <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-4">
           <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
-            <p className="text-[#8b95a5] text-xs">Max Drawdown</p>
+            <p className="text-[#8b95a5] text-xs">Max Drawdown<InfoTooltip text={STAT_TOOLTIPS.maxDrawdown} /></p>
             <p className="text-lg font-bold text-[#ef4444]">-{stats.maxDrawdown.toFixed(1)}%</p>
           </div>
           <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
-            <p className="text-[#8b95a5] text-xs">Volatiliteit</p>
+            <p className="text-[#8b95a5] text-xs">Volatiliteit<InfoTooltip text={STAT_TOOLTIPS.volatility} /></p>
             <p className="text-lg font-bold text-[#f97316]">{stats.volatility.toFixed(1)}%</p>
           </div>
           <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
-            <p className="text-[#8b95a5] text-xs">Sharpe Ratio</p>
+            <p className="text-[#8b95a5] text-xs">Sharpe Ratio<InfoTooltip text={STAT_TOOLTIPS.sharpeRatio} /></p>
             <p className={`text-lg font-bold ${stats.sharpeRatio >= 0 ? 'text-green-400' : 'text-[#ef4444]'}`}>
               {stats.sharpeRatio.toFixed(2)}
             </p>
           </div>
           <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
-            <p className="text-[#8b95a5] text-xs">Win Rate</p>
+            <p className="text-[#8b95a5] text-xs">Win Rate<InfoTooltip text={STAT_TOOLTIPS.winRate} /></p>
             <p className="text-lg font-bold text-[#2098d1]">{stats.winRate.toFixed(0)}%</p>
           </div>
           <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
-            <p className="text-[#8b95a5] text-xs">Beta vs CCI30</p>
+            <p className="text-[#8b95a5] text-xs">Beta vs CCI30<InfoTooltip text={STAT_TOOLTIPS.beta} /></p>
             <p className="text-lg font-bold text-white">{stats.beta.toFixed(2)}</p>
           </div>
           <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441]">
-            <p className="text-[#8b95a5] text-xs">Correlatie</p>
+            <p className="text-[#8b95a5] text-xs">Correlatie<InfoTooltip text={STAT_TOOLTIPS.correlation} /></p>
             <p className="text-lg font-bold text-white">{(stats.correlation * 100).toFixed(0)}%</p>
           </div>
         </div>
