@@ -307,7 +307,7 @@ export default function SharePriceDashboard() {
           <div className="flex items-center gap-4">
             <img src="https://adamcapital.nl/assets/img/logo-adam-wit.svg" alt="A-DAM Capital" className="h-10" />
             <div>
-              <h1 className="text-2xl font-bold">Share Price Dashboard</h1>
+              <h1 className="text-2xl font-bold">Prijs per Participatie</h1>
               <p className="text-[#8b95a5] text-sm">
                 {formatDate(stats.startDate)} - {formatDate(stats.endDate)}
               </p>
@@ -453,7 +453,7 @@ export default function SharePriceDashboard() {
           <button
             onClick={() => setView('shareprice')}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium ${view === 'shareprice' ? 'bg-[#2098d1] text-white' : 'bg-[#f8f9fa] text-[#0f151b] hover:bg-[#e5e7eb]'}`}>
-            💶 Share Price
+            💶 Prijs per Participatie
           </button>
           <button
             onClick={() => setView('normalized')}
@@ -476,7 +476,7 @@ export default function SharePriceDashboard() {
         {/* Share Price Chart */}
         {(view === 'shareprice' || view === 'both') && (
           <div className="bg-white p-4 rounded-xl border border-[#e5e7eb] shadow-sm mb-4">
-            <h2 className="text-sm font-medium mb-3 text-[#6b7585]">Share Price (EUR)</h2>
+            <h2 className="text-sm font-medium mb-3 text-[#6b7585]">Prijs per Participatie (EUR)</h2>
             <ResponsiveContainer width="100%" height={280}>
               <AreaChart data={chartData}>
                 <defs>
@@ -500,7 +500,7 @@ export default function SharePriceDashboard() {
                 />
                 <Tooltip 
                   contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '12px' }}
-                  formatter={(value) => [`€${Number(value).toFixed(2)}`, 'Share Price']}
+                  formatter={(value) => [`€${Number(value).toFixed(2)}`, 'Prijs per Participatie']}
                   labelFormatter={(_, payload) => payload?.[0]?.payload?.date ? formatDate(payload[0].payload.date) : ''}
                 />
                 <ReferenceLine y={stats.startPrice} stroke="#6b7585" strokeDasharray="5 5" />
