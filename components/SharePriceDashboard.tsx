@@ -79,7 +79,7 @@ const MONTH_NAMES = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'se
 const InfoTooltip = ({ text }: { text: string }) => (
   <span className="relative inline-block ml-1 group">
     <span className="cursor-help text-[#6b7585] hover:text-[#2098d1] text-xs">ⓘ</span>
-    <span className="fixed sm:absolute top-auto sm:top-full left-4 right-4 sm:left-auto sm:right-0 mt-1 sm:mt-2 px-3 py-2 text-xs text-[#0f151b] bg-white border border-[#e5e7eb] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg sm:w-56 leading-relaxed">
+    <span className="fixed sm:absolute top-auto sm:top-full left-4 right-4 sm:left-auto sm:right-0 mt-1 sm:mt-2 px-3 py-2 text-xs text-white bg-[#161d26] border border-[#2a3441] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-lg sm:w-56 leading-relaxed">
       {text}
     </span>
   </span>
@@ -300,7 +300,7 @@ export default function SharePriceDashboard() {
   const formatDate = (d: string) => new Date(d).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' });
 
   return (
-    <div className="min-h-screen text-[#0f151b] bg-[#f4f4f4]">
+    <div className="min-h-screen text-white bg-[#0f151b]">
       {/* Header Banner */}
       <div className="bg-gradient-to-r from-[#0f151b] to-[#1e2731] text-white py-8 px-4">
         <div className="max-w-6xl mx-auto flex items-center gap-4">
@@ -318,21 +318,21 @@ export default function SharePriceDashboard() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-          <div className="bg-white p-3 rounded-lg border border-[#e5e7eb] shadow-sm">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441] shadow-sm">
             <p className="text-[#6b7585] text-xs">Startprijs<InfoTooltip text={STAT_TOOLTIPS.startPrice} /></p>
-            <p className="text-xl font-bold text-[#0f151b]">{formatEUR(stats.startPrice)}</p>
+            <p className="text-xl font-bold text-white">{formatEUR(stats.startPrice)}</p>
           </div>
-          <div className="bg-white p-3 rounded-lg border border-[#e5e7eb] shadow-sm">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441] shadow-sm">
             <p className="text-[#6b7585] text-xs">Eindprijs<InfoTooltip text={STAT_TOOLTIPS.endPrice} /></p>
-            <p className="text-xl font-bold text-[#0f151b]">{formatEUR(stats.endPrice)}</p>
+            <p className="text-xl font-bold text-white">{formatEUR(stats.endPrice)}</p>
           </div>
-          <div className="bg-white p-3 rounded-lg border border-[#e5e7eb] shadow-sm">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441] shadow-sm">
             <p className="text-[#6b7585] text-xs">NAV Return<InfoTooltip text={STAT_TOOLTIPS.navReturn} /></p>
             <p className={`text-xl font-bold ${stats.navReturn >= 0 ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
               {formatPct(stats.navReturn)}
             </p>
           </div>
-          <div className="bg-white p-3 rounded-lg border border-[#e5e7eb] shadow-sm">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441] shadow-sm">
             <p className="text-[#6b7585] text-xs">Alpha vs CCI30<InfoTooltip text={STAT_TOOLTIPS.alpha} /></p>
             <p className={`text-xl font-bold ${stats.alpha >= 0 ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
               {formatPct(stats.alpha)}
@@ -342,43 +342,43 @@ export default function SharePriceDashboard() {
 
         {/* Advanced Stats */}
         <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-4">
-          <div className="bg-white p-3 rounded-lg border border-[#e5e7eb] shadow-sm">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441] shadow-sm">
             <p className="text-[#6b7585] text-xs">Max Drawdown<InfoTooltip text={STAT_TOOLTIPS.maxDrawdown} /></p>
             <p className="text-lg font-bold text-[#ef4444]">-{stats.maxDrawdown.toFixed(1)}%</p>
           </div>
-          <div className="bg-white p-3 rounded-lg border border-[#e5e7eb] shadow-sm">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441] shadow-sm">
             <p className="text-[#6b7585] text-xs">Volatiliteit<InfoTooltip text={STAT_TOOLTIPS.volatility} /></p>
             <p className="text-lg font-bold text-[#f97316]">{stats.volatility.toFixed(1)}%</p>
           </div>
-          <div className="bg-white p-3 rounded-lg border border-[#e5e7eb] shadow-sm">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441] shadow-sm">
             <p className="text-[#6b7585] text-xs">Sharpe Ratio<InfoTooltip text={STAT_TOOLTIPS.sharpeRatio} /></p>
             <p className={`text-lg font-bold ${stats.sharpeRatio >= 0 ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
               {stats.sharpeRatio.toFixed(2)}
             </p>
           </div>
-          <div className="bg-white p-3 rounded-lg border border-[#e5e7eb] shadow-sm">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441] shadow-sm">
             <p className="text-[#6b7585] text-xs">Win Rate<InfoTooltip text={STAT_TOOLTIPS.winRate} /></p>
             <p className="text-lg font-bold text-[#2098d1]">{stats.winRate.toFixed(0)}%</p>
           </div>
-          <div className="bg-white p-3 rounded-lg border border-[#e5e7eb] shadow-sm">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441] shadow-sm">
             <p className="text-[#6b7585] text-xs">Beta vs CCI30<InfoTooltip text={STAT_TOOLTIPS.beta} /></p>
-            <p className="text-lg font-bold text-[#0f151b]">{stats.beta.toFixed(2)}</p>
+            <p className="text-lg font-bold text-white">{stats.beta.toFixed(2)}</p>
           </div>
-          <div className="bg-white p-3 rounded-lg border border-[#e5e7eb] shadow-sm">
+          <div className="bg-[#161d26] p-3 rounded-lg border border-[#2a3441] shadow-sm">
             <p className="text-[#6b7585] text-xs">Correlatie<InfoTooltip text={STAT_TOOLTIPS.correlation} /></p>
-            <p className="text-lg font-bold text-[#0f151b]">{(stats.correlation * 100).toFixed(0)}%</p>
+            <p className="text-lg font-bold text-white">{(stats.correlation * 100).toFixed(0)}%</p>
           </div>
         </div>
 
         {/* Date Range Controls */}
-        <div className="bg-white p-4 rounded-xl border border-[#e5e7eb] shadow-sm mb-4">
+        <div className="bg-[#161d26] p-4 rounded-xl border border-[#2a3441] shadow-sm mb-4">
           <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="text-[#6b7585] text-sm">Periode:</span>
             {presets.map((preset) => (
               <button
                 key={preset.label}
                 onClick={() => applyPreset(preset)}
-                className="px-2 py-1 text-xs rounded bg-[#f8f9fa] hover:bg-[#e5e7eb] text-[#0f151b] transition-colors"
+                className="px-2 py-1 text-xs rounded bg-[#1e2731] hover:bg-[#2a3441] text-white transition-colors"
               >
                 {preset.label}
               </button>
@@ -395,7 +395,7 @@ export default function SharePriceDashboard() {
                 min={allDates[0]}
                 max={endDateInput}
                 onChange={(e) => handleDateInputChange('start', e.target.value)}
-                className="bg-[#f8f9fa] border border-[#e5e7eb] rounded px-2 py-1 text-sm text-[#0f151b]"
+                className="bg-[#1e2731] border border-[#2a3441] rounded px-2 py-1 text-sm text-white"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -406,7 +406,7 @@ export default function SharePriceDashboard() {
                 min={startDateInput}
                 max={allDates[allDates.length - 1]}
                 onChange={(e) => handleDateInputChange('end', e.target.value)}
-                className="bg-[#f8f9fa] border border-[#e5e7eb] rounded px-2 py-1 text-sm text-[#0f151b]"
+                className="bg-[#1e2731] border border-[#2a3441] rounded px-2 py-1 text-sm text-white"
               />
             </div>
           </div>
@@ -444,30 +444,30 @@ export default function SharePriceDashboard() {
         <div className="flex gap-2 mb-3 flex-wrap">
           <button
             onClick={() => setView('shareprice')}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium ${view === 'shareprice' ? 'bg-[#2098d1] text-white' : 'bg-[#f8f9fa] text-[#0f151b] hover:bg-[#e5e7eb]'}`}>
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium ${view === 'shareprice' ? 'bg-[#2098d1] text-white' : 'bg-[#1e2731] text-white hover:bg-[#2a3441]'}`}>
             💶 Prijs per Participatie
           </button>
           <button
             onClick={() => setView('normalized')}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium ${view === 'normalized' ? 'bg-[#2098d1] text-white' : 'bg-[#f8f9fa] text-[#0f151b] hover:bg-[#e5e7eb]'}`}>
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium ${view === 'normalized' ? 'bg-[#2098d1] text-white' : 'bg-[#1e2731] text-white hover:bg-[#2a3441]'}`}>
             📊 vs CCI30
           </button>
           <button
             onClick={() => setView('both')}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium ${view === 'both' ? 'bg-[#2098d1] text-white' : 'bg-[#f8f9fa] text-[#0f151b] hover:bg-[#e5e7eb]'}`}>
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium ${view === 'both' ? 'bg-[#2098d1] text-white' : 'bg-[#1e2731] text-white hover:bg-[#2a3441]'}`}>
             🔄 Beide
           </button>
           <div className="flex-1" />
           <button
             onClick={() => setShowTable(!showTable)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium ${showTable ? 'bg-[#22c55e] text-white' : 'bg-[#f8f9fa] text-[#0f151b] hover:bg-[#e5e7eb]'}`}>
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium ${showTable ? 'bg-[#22c55e] text-white' : 'bg-[#1e2731] text-white hover:bg-[#2a3441]'}`}>
             📋 Maandtabel
           </button>
         </div>
 
         {/* Share Price Chart */}
         {(view === 'shareprice' || view === 'both') && (
-          <div className="bg-white p-4 rounded-xl border border-[#e5e7eb] shadow-sm mb-4">
+          <div className="bg-[#161d26] p-4 rounded-xl border border-[#2a3441] shadow-sm mb-4">
             <h2 className="text-sm font-medium mb-3 text-[#6b7585]">Prijs per Participatie (EUR)</h2>
             <ResponsiveContainer width="100%" height={280}>
               <AreaChart data={chartData}>
@@ -477,7 +477,7 @@ export default function SharePriceDashboard() {
                     <stop offset="95%" stopColor="#2098d1" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" />
                 <XAxis 
                   dataKey="displayDate" 
                   stroke="#6b7585" 
@@ -491,7 +491,7 @@ export default function SharePriceDashboard() {
                   tickFormatter={(v) => `€${v}`}
                 />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#1e2731', border: '1px solid #2a3441', color: '#fff', borderRadius: '8px', fontSize: '12px' }}
                   formatter={(value) => [`€${Number(value).toFixed(2)}`, 'Prijs per Participatie']}
                   labelFormatter={(_, payload) => payload?.[0]?.payload?.date ? formatDate(payload[0].payload.date) : ''}
                 />
@@ -504,11 +504,11 @@ export default function SharePriceDashboard() {
 
         {/* Normalized Chart */}
         {(view === 'normalized' || view === 'both') && (
-          <div className="bg-white p-4 rounded-xl border border-[#e5e7eb] shadow-sm mb-4">
+          <div className="bg-[#161d26] p-4 rounded-xl border border-[#2a3441] shadow-sm mb-4">
             <h2 className="text-sm font-medium mb-3 text-[#6b7585]">Performance vs CCI30 (100 = startdatum)</h2>
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" />
                 <XAxis 
                   dataKey="displayDate" 
                   stroke="#6b7585" 
@@ -522,7 +522,7 @@ export default function SharePriceDashboard() {
                   tickFormatter={(v) => `${v.toFixed(0)}%`}
                 />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#1e2731', border: '1px solid #2a3441', color: '#fff', borderRadius: '8px', fontSize: '12px' }}
                   formatter={(value, name) => [`${Number(value).toFixed(1)}%`, name]}
                   labelFormatter={(_, payload) => payload?.[0]?.payload?.date ? formatDate(payload[0].payload.date) : ''}
                 />
@@ -537,12 +537,12 @@ export default function SharePriceDashboard() {
 
         {/* Monthly NAV Table */}
         {showTable && (
-          <div className="bg-white p-4 rounded-xl border border-[#e5e7eb] shadow-sm mb-4">
+          <div className="bg-[#161d26] p-4 rounded-xl border border-[#2a3441] shadow-sm mb-4">
             <h2 className="text-sm font-medium mb-3 text-[#6b7585]">📋 Officiële NAV per Maand (Prijs per Participatie)</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-[#e5e7eb]">
+                  <tr className="border-b border-[#2a3441]">
                     <th className="text-left py-2 px-2 text-[#6b7585] font-medium">Jaar</th>
                     {MONTH_NAMES.map((m, i) => (
                       <th key={i} className="text-right py-2 px-1 text-[#6b7585] font-medium">{m}</th>
@@ -560,8 +560,8 @@ export default function SharePriceDashboard() {
                     const yearReturn = ((endVal - startVal) / startVal) * 100;
 
                     return (
-                      <tr key={year} className="border-b border-[#e5e7eb]/50 hover:bg-[#f8f9fa]">
-                        <td className="py-2 px-2 font-medium text-[#0f151b]">{year}</td>
+                      <tr key={year} className="border-b border-[#2a3441]/50 hover:bg-[#1e2731]">
+                        <td className="py-2 px-2 font-medium text-white">{year}</td>
                         {MONTH_NAMES.map((_, i) => {
                           const item = yearData[i];
                           if (!item) return <td key={i} className="text-right py-2 px-1 text-[#9ca3af]">-</td>;
@@ -577,7 +577,7 @@ export default function SharePriceDashboard() {
 
                           return (
                             <td key={i} className="text-right py-2 px-1">
-                              <div className="text-[#0f151b]">€{item.price.toFixed(0)}</div>
+                              <div className="text-white">€{item.price.toFixed(0)}</div>
                               <div className={`text-xs ${change >= 0 ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
                                 {change >= 0 ? '+' : ''}{change.toFixed(1)}%
                               </div>
@@ -598,14 +598,14 @@ export default function SharePriceDashboard() {
         )}
 
         {/* Portfolio Holdings */}
-        <div className="bg-white p-4 rounded-xl border border-[#e5e7eb] shadow-sm mt-4">
+        <div className="bg-[#161d26] p-4 rounded-xl border border-[#2a3441] shadow-sm mt-4">
           <div className="flex justify-between items-center mb-3">
-            <h2 className="text-lg font-semibold text-[#0f151b]">📊 Portfolio Holdings</h2>
+            <h2 className="text-lg font-semibold text-white">📊 Portfolio Holdings</h2>
             <span className="text-[#6b7585] text-xs">Laatst bijgewerkt: {PORTFOLIO_LAST_UPDATED}</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
             {PORTFOLIO_HOLDINGS.map((asset) => (
-              <div key={asset.symbol} className="bg-[#f8f9fa] p-3 rounded-lg border border-[#e5e7eb] text-center">
+              <div key={asset.symbol} className="bg-[#1e2731] p-3 rounded-lg border border-[#2a3441] text-center">
                 <img 
                   src={asset.img} 
                   alt={asset.symbol} 
@@ -613,7 +613,7 @@ export default function SharePriceDashboard() {
                   onError={(e) => { e.currentTarget.src = 'https://images.octav.fi/tokens/small/NoImageAvailable_small.png'; }}
                 />
                 <p className="text-sm font-bold text-[#2098d1]">{asset.symbol}</p>
-                <p className="text-lg font-bold text-[#0f151b]">{asset.pct}%</p>
+                <p className="text-lg font-bold text-white">{asset.pct}%</p>
               </div>
             ))}
           </div>
