@@ -63,12 +63,6 @@
       font-size: 24px;
       margin-top: 40px;
       margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    h2:first-of-type {
-      margin-top: 0;
     }
     h3 {
       color: #2098d1;
@@ -107,26 +101,10 @@
     li strong {
       color: #0f151b;
     }
-    .news-item {
-      background: #f8f9fa;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 15px 0;
-      border-left: 3px solid #e5e7eb;
-      transition: border-color 0.2s;
-    }
-    .news-item:hover {
-      border-left-color: #2098d1;
-    }
-    .news-item h4 {
-      margin: 0 0 8px 0;
-      color: #0f151b;
-      font-size: 16px;
-    }
-    .news-item p {
-      margin: 0;
-      font-size: 14px;
-      color: #6b7585;
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e5e7eb, transparent);
+      margin: 40px 0;
     }
     .cta-section {
       background: linear-gradient(135deg, #0f151b 0%, #1e2731 100%);
@@ -152,15 +130,6 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      transition: background 0.2s;
-    }
-    .cta-button:hover {
-      background: #1a7ab0;
-    }
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, #e5e7eb, transparent);
-      margin: 40px 0;
     }
     .footer {
       background: #0f151b;
@@ -173,25 +142,12 @@
       color: #2098d1;
       text-decoration: none;
     }
-    .footer a:hover {
-      text-decoration: underline;
-    }
-    .social-links {
-      margin: 20px 0;
-    }
-    .social-links a {
-      margin: 0 10px;
-      font-size: 16px;
-    }
-    
     @media (max-width: 768px) {
       body { padding: 10px; }
       .header { padding: 30px 20px; }
       .header h1 { font-size: 28px; }
       .content { padding: 25px; }
       h2 { font-size: 20px; }
-      .intro { font-size: 16px; padding-left: 15px; }
-      .cta-section { padding: 25px; }
     }
   </style>
 </head>
@@ -206,86 +162,66 @@
     
     <div class="content">
       <p class="intro">
-        Welkom bij de maandelijkse nieuwsbrief van A-DAM Capital. We delen onze visie op de cryptomarkt, belangrijke ontwikkelingen en trends die we volgen.
+        Het nieuwe jaar begon rustig maar eindigde turbulent. Terwijl traditionele financiële instellingen hun crypto-ambities blijven uitbreiden, worstelt de markt met macro-economische onzekerheid en politieke spanningen.
       </p>
 
-      <h2>📊 Marktoverzicht</h2>
+      <h2>📊 Marktbeeld</h2>
       
-      <p>Januari 2026 was een maand van consolidatie. Na een sterke afsluiting van 2025 startte het nieuwe jaar in een zijwaartse range, met Bitcoin schommelend tussen de $92.000 en $98.000.</p>
+      <p>Bitcoin opende januari rond de $93.000 en bereikte kort de $98.000 voordat geopolitieke onrust de koers terugdrukte naar het $81.000-$85.000 gebied. De spanning rond mogelijke Amerikaanse importtarieven op Europa en uitspraken over Groenland zorgden voor een klassieke risk-off reactie in alle markten.</p>
       
-      <p>De volatiliteit nam halverwege de maand toe door geopolitieke spanningen. Uitspraken van Trump over Groenland en mogelijke importtarieven op Europa zorgden voor een kortstondige risk-off beweging in alle markten. Aan het einde van de maand stabiliseerde de situatie nadat de tarievendreiging werd ingetrokken.</p>
+      <p>De Amerikaanse centrale bank hield de rente onveranderd, maar het sentiment bleef fragiel. Politieke druk op Fed-voorzitter Powell nam toe, wat extra onzekerheid toevoegde aan een toch al nerveuze markt. Voor crypto-beleggers blijft het rentepad cruciaal — elke hint richting versoepeling wordt doorgaans positief ontvangen.</p>
 
       <div class="highlight-box">
-        <h4>🏦 Federal Reserve</h4>
-        <p>De Fed hield de rente onveranderd, maar de politieke druk op voorzitter Powell neemt toe. Voor crypto blijft het rentepad een belangrijke driver — lagere rentes zijn doorgaans positief voor risk assets.</p>
-      </div>
-
-      <p>ETF-flows waren wisselend deze maand: sterke instroom begin januari maakte plaats voor uitstroom tijdens de macro-onrust, om daarna weer te herstellen. Dit patroon laat zien dat institutionele beleggers steeds actiever reageren op macro-ontwikkelingen via crypto-ETF's.</p>
-
-      <div class="divider"></div>
-
-      <h2>🏛️ Institutionele Ontwikkelingen</h2>
-      
-      <p>Januari toonde opnieuw dat de institutionele adoptie van crypto in een stroomversnelling zit. De grote financiële instellingen zetten concrete stappen:</p>
-
-      <div class="news-item">
-        <h4>Morgan Stanley stapt in crypto-ETF's</h4>
-        <p>Als eerste grote Amerikaanse bank diende Morgan Stanley eigen spot crypto-ETF aanvragen in. Een belangrijke verschuiving van doorverkopen naar eigen producten.</p>
-      </div>
-
-      <div class="news-item">
-        <h4>Fidelity lanceert stablecoin</h4>
-        <p>De vermogensbeheerder lanceerde een eigen stablecoin gericht op institutionele settlement, waarmee crypto-infrastructuur verder professionaliseert.</p>
-      </div>
-
-      <div class="news-item">
-        <h4>BNY Mellon introduceert tokenized deposits</h4>
-        <p>De oudste bank van Amerika biedt nu tokenized deposits voor 24/7 cash management — blockchain bereikt de kern van het traditionele bankwezen.</p>
-      </div>
-
-      <div class="news-item">
-        <h4>NYSE werkt aan tokenized securities</h4>
-        <p>Via moederbedrijf ICE werkt de New York Stock Exchange aan een platform voor tokenized securities met continue handel.</p>
-      </div>
-
-      <div class="news-item">
-        <h4>Strategy koopt $2,1 miljard Bitcoin</h4>
-        <p>Het voormalige MicroStrategy deed hun grootste Bitcoin-aankoop sinds 2024, waarmee ze optimaal gebruik maakten van de correctie.</p>
+        <h4>📉 ETF Dynamiek</h4>
+        <p>De spot Bitcoin en Ethereum ETF's kenden een turbulente maand. Sterke instroom aan het begin van januari maakte plaats voor significante uitstroom tijdens de piek van de macro-onrust. Dit patroon laat zien hoe nauw crypto inmiddels verweven is met bredere marktsentimenten.</p>
       </div>
 
       <div class="divider"></div>
 
-      <h2>⚖️ Regelgeving & Beleid</h2>
+      <h2>🏛️ Wall Street Omarmt Crypto</h2>
       
-      <p>De regulatoire omgeving voor crypto wordt steeds duidelijker, wat op langere termijn positief is voor institutionele adoptie.</p>
-
-      <h3>Clarity Act nadert stemming</h3>
-      <p>In de Verenigde Staten nadert de Clarity Act een cruciale stemming in de Senaat. Deze wet moet duidelijkheid scheppen over de classificatie van crypto-assets en de rolverdeling tussen toezichthouders. Na enkele aanpassingen op basis van feedback van de industrie wordt goedkeuring binnen weken verwacht.</p>
-
-      <h3>Davos 2026: Van "of" naar "hoe"</h3>
-      <p>Op het World Economic Forum in Davos stond crypto prominent op de agenda. Opvallend was de verschuiving in toon: niet meer óf crypto relevant wordt, maar hóe het geïntegreerd wordt in bestaande financiële systemen. Stablecoins en tokenisatie domineerden de discussies.</p>
-
-      <div class="divider"></div>
-
-      <h2>🔗 Netwerk & Technologie</h2>
-      
-      <div class="highlight-box">
-        <h4>Ethereum transactierecord</h4>
-        <p>Ethereum bereikte een nieuw record met meer dan 2,2 miljoen dagelijkse transacties, bij relatief lage fees. Dit onderstreept de groeiende adoptie van Ethereum als settlement layer voor DeFi, stablecoins en tokenized assets.</p>
-      </div>
-
-      <p>De combinatie van verbeterde schaalbaarheid via Layer 2 oplossingen en de aanhoudend lage fees op mainnet maakt Ethereum steeds aantrekkelijker voor grootschalige toepassingen.</p>
-
-      <div class="divider"></div>
-
-      <h2>🔮 Vooruitzichten</h2>
-      
-      <p>Op basis van de huidige marktdynamiek zien we de volgende thema's voor de komende periode:</p>
+      <p>Ondanks de prijsvolatiliteit blijft de institutionele adoptie in een stroomversnelling. Januari leverde opvallende aankondigingen op:</p>
 
       <ul>
-        <li><strong>Korte termijn:</strong> We verwachten aanhoudende volatiliteit totdat er meer duidelijkheid komt over Amerikaanse regelgeving en het Fed-beleid. De markt blijft gevoelig voor macro-nieuws.</li>
-        <li><strong>Middellange termijn:</strong> De institutionele adoptie versnelt zichtbaar. Wanneer Morgan Stanley, Fidelity en BNY Mellon allemaal crypto-producten lanceren, valideert dat de asset class voor een breder publiek.</li>
-        <li><strong>Thema's om te volgen:</strong> Stablecoins als financiële infrastructuur, tokenisatie van traditionele assets, en de convergentie van AI en blockchain.</li>
+        <li><strong>Morgan Stanley</strong> werd de eerste grote Amerikaanse bank die eigen spot crypto-ETF producten aanvroeg — een significante verschuiving van doorverkoper naar productaanbieder.</li>
+        <li><strong>Fidelity</strong> lanceerde een eigen stablecoin, specifiek gericht op institutionele settlement en treasury-operaties.</li>
+        <li><strong>BNY Mellon</strong> introduceerde blockchain-gebaseerde deposito's voor 24/7 cash management — de oudste bank van Amerika brengt haar kerninfrastructuur naar de blockchain.</li>
+        <li><strong>Strategy</strong> (voorheen MicroStrategy) vergrootte haar Bitcoin-positie met $2,1 miljard — hun grootste aankoop sinds 2024.</li>
+      </ul>
+
+      <p>De NYSE werkt via moederbedrijf ICE aan een platform voor tokenized effecten met continue handelsuren. Dit past in de bredere trend van tokenisatie die we al langer volgen.</p>
+
+      <div class="divider"></div>
+
+      <h2>⚖️ Regelgeving Neemt Vorm</h2>
+      
+      <p>In Washington nadert de Clarity Act een beslissende stemming in de Senaat. Deze wet moet eindelijk duidelijkheid scheppen over hoe verschillende crypto-assets geclassificeerd worden en welke toezichthouder waarvoor verantwoordelijk is. Na enkele aanpassingen op basis van industrie-feedback wordt brede steun verwacht.</p>
+
+      <p>Op het World Economic Forum in Davos was de toonzetting opvallend constructief. De discussie ging niet langer over óf crypto een plek krijgt in het financiële systeem, maar hóe die integratie vorm krijgt. Stablecoins en tokenisatie van traditionele assets domineerden de gesprekken.</p>
+
+      <div class="divider"></div>
+
+      <h2>🔗 Technologie & Netwerken</h2>
+
+      <div class="highlight-box">
+        <h4>Ethereum Breaking Records</h4>
+        <p>Het Ethereum-netwerk verwerkte meer dan 2,2 miljoen transacties per dag — een nieuw record. Opmerkelijk genoeg bleven de transactiekosten relatief laag, wat de effectiviteit van recente schaalbaarheidsupgrades onderstreept.</p>
+      </div>
+
+      <h3>Blockchain Trilemma: Opgelost?</h3>
+      <p>Ethereum-medeoprichter Vitalik Buterin claimde dat het beruchte blockchain-trilemma — de afweging tussen decentralisatie, veiligheid en schaalbaarheid — nu in de praktijk is opgelost. De combinatie van proof-of-stake, sharding-voorbereidingen en layer-2 oplossingen maakt het mogelijk om alle drie aspecten te optimaliseren zonder fundamentele compromissen.</p>
+
+      <h3>Solana's Volgende Hoofdstuk</h3>
+      <p>Voor Solana wordt 2026 een cruciaal jaar. Na een 2025 dat gedomineerd werd door memecoin-handel, groeit de druk om te bewijzen dat het netwerk meer te bieden heeft dan speculatieve use cases. De vraag is of het ecosysteem zich kan ontwikkelen richting serieuze DeFi en enterprise-toepassingen.</p>
+
+      <div class="divider"></div>
+
+      <h2>🔮 Wat We Volgen</h2>
+      
+      <ul>
+        <li><strong>Korte termijn:</strong> De markt blijft gevoelig voor macro-nieuws en Fed-communicatie. De Clarity Act stemming kan voor een sentiment-shift zorgen.</li>
+        <li><strong>Middellange termijn:</strong> De institutionele golf is niet te stoppen. Wanneer Morgan Stanley, Fidelity én BNY Mellon allemaal crypto-producten lanceren, legitimeert dat de asset class voor een veel breder publiek.</li>
+        <li><strong>Thema's:</strong> Stablecoins als financiële infrastructuur, tokenisatie van traditionele assets, en de convergentie van AI met blockchain-technologie.</li>
       </ul>
 
       <div class="cta-section">
@@ -301,14 +237,13 @@
         <strong>A-DAM Capital</strong><br>
         Amsterdam Digital Asset Management B.V.
       </p>
-      <div class="social-links">
+      <p style="margin-top: 15px;">
         <a href="https://adamcapital.nl">Website</a> · 
         <a href="mailto:info@adamcapital.nl">Email</a> · 
         <a href="https://linkedin.com/company/adam-capital">LinkedIn</a>
-      </div>
+      </p>
       <p style="margin-top: 25px; font-size: 12px; color: #6b7585;">
-        Deze nieuwsbrief is uitsluitend bedoeld voor informatieve doeleinden en vormt geen beleggingsadvies. 
-        De waarde van beleggingen kan fluctueren. In het verleden behaalde resultaten bieden geen garantie voor de toekomst.
+        Deze nieuwsbrief is uitsluitend bedoeld voor informatieve doeleinden en vormt geen beleggingsadvies.
       </p>
     </div>
   </div>
