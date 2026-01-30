@@ -142,7 +142,90 @@
       color: #2098d1;
       text-decoration: none;
     }
+
+    /* ===== ILLUSTRATIONS ===== */
+    .section-illustration {
+      float: right;
+      margin: 0 0 20px 25px;
+      opacity: 0.12;
+    }
+    
+    .section-illustration svg {
+      width: 120px;
+      height: 120px;
+    }
+    
+    .header-decoration {
+      position: absolute;
+      opacity: 0.08;
+    }
+    
+    .header {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header-decoration.left {
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .header-decoration.right {
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .inline-icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+      opacity: 0.7;
+    }
+    
+    .inline-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: #2098d1;
+    }
+    
+    .highlight-box .box-illustration {
+      float: right;
+      margin: -10px -10px 10px 15px;
+      opacity: 0.15;
+    }
+    
+    .highlight-box .box-illustration svg {
+      width: 80px;
+      height: 80px;
+    }
+    
+    .decorative-line {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 40px 0;
+    }
+    
+    .decorative-line::before,
+    .decorative-line::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e5e7eb, transparent);
+    }
+    
+    .decorative-line svg {
+      width: 30px;
+      height: 30px;
+      fill: #2098d1;
+      opacity: 0.3;
+    }
+
     @media (max-width: 768px) {
+      .section-illustration { display: none; }
+      .header-decoration { display: none; }
       body { padding: 10px; }
       .header { padding: 30px 20px; }
       .header h1 { font-size: 28px; }
@@ -154,6 +237,23 @@
 <body>
   <div class="container">
     <div class="header">
+      <!-- Decorative elements -->
+      <div class="header-decoration left">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="80" stroke="#2098d1" stroke-width="2"/>
+          <circle cx="100" cy="100" r="60" stroke="#2098d1" stroke-width="1.5"/>
+          <circle cx="100" cy="100" r="40" stroke="#2098d1" stroke-width="1"/>
+          <path d="M100 20 L100 180 M20 100 L180 100" stroke="#2098d1" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="header-decoration right">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+          <polygon points="100,20 180,100 100,180 20,100" stroke="#2098d1" stroke-width="2" fill="none"/>
+          <polygon points="100,50 150,100 100,150 50,100" stroke="#2098d1" stroke-width="1.5" fill="none"/>
+          <circle cx="100" cy="100" r="20" stroke="#2098d1" stroke-width="1"/>
+        </svg>
+      </div>
+      
       <img src="https://adamcapital.nl/assets/img/logo-adam-wit.svg" alt="A-DAM Capital">
       <h1>Nieuwsbrief Januari</h1>
       <div class="subtitle">Crypto Market Insights</div>
@@ -162,66 +262,198 @@
     
     <div class="content">
       <p class="intro">
-        Het nieuwe jaar begon rustig maar eindigde turbulent. Terwijl traditionele financiële instellingen hun crypto-ambities blijven uitbreiden, worstelt de markt met macro-economische onzekerheid en politieke spanningen.
+        Januari bracht prijsvolatiliteit door geopolitieke spanningen, maar achter de schermen bouwden grote financiële instellingen gestaag aan crypto-infrastructuur. Morgan Stanley, Fidelity en Tether zetten belangrijke stappen, terwijl Strategy haar Bitcoin-positie fors uitbreidde.
       </p>
 
       <h2>📊 Marktbeeld</h2>
       
-      <p>Bitcoin opende januari rond de $93.000 en bereikte kort de $98.000 voordat geopolitieke onrust de koers terugdrukte naar het $81.000-$85.000 gebied. De spanning rond mogelijke Amerikaanse importtarieven op Europa en uitspraken over Groenland zorgden voor een klassieke risk-off reactie in alle markten.</p>
+      <div class="section-illustration">
+        <svg viewBox="0 0 120 120" fill="none">
+          <path d="M10 90 L30 70 L50 80 L70 40 L90 50 L110 20" stroke="#2098d1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="30" cy="70" r="4" fill="#2098d1"/>
+          <circle cx="50" cy="80" r="4" fill="#2098d1"/>
+          <circle cx="70" cy="40" r="4" fill="#2098d1"/>
+          <circle cx="90" cy="50" r="4" fill="#2098d1"/>
+          <circle cx="110" cy="20" r="4" fill="#2098d1"/>
+          <path d="M10 100 L110 100" stroke="#0f151b" stroke-width="1" opacity="0.3"/>
+          <path d="M10 10 L10 100" stroke="#0f151b" stroke-width="1" opacity="0.3"/>
+        </svg>
+      </div>
       
-      <p>De Amerikaanse centrale bank hield de rente onveranderd, maar het sentiment bleef fragiel. Politieke druk op Fed-voorzitter Powell nam toe, wat extra onzekerheid toevoegde aan een toch al nerveuze markt. Voor crypto-beleggers blijft het rentepad cruciaal — elke hint richting versoepeling wordt doorgaans positief ontvangen.</p>
+      <p>Bitcoin schommelde deze maand tussen $88.000 en $98.000. Halverwege januari piekte de koers kort boven de $98.000, om daarna terug te zakken naar de niveaus van eind december. De bewegingen werden gedreven door een combinatie van macro-economische factoren en geopolitieke onrust.</p>
+      
+      <p>De Federal Reserve hield de rente stabiel op 3,5-3,75%, zoals verwacht. Toch bleef onzekerheid overheersen. Spanningen rond het Amerikaanse handelsbeleid — met name dreigende importheffingen op Europa en uitspraken over Groenland — zorgden voor nervositeit. Toen deze heffingen later werden ingetrokken, keerde enige rust terug, maar het vertrouwen bleef kwetsbaar.</p>
 
       <div class="highlight-box">
-        <h4>📉 ETF Dynamiek</h4>
-        <p>De spot Bitcoin en Ethereum ETF's kenden een turbulente maand. Sterke instroom aan het begin van januari maakte plaats voor significante uitstroom tijdens de piek van de macro-onrust. Dit patroon laat zien hoe nauw crypto inmiddels verweven is met bredere marktsentimenten.</p>
+        <div class="box-illustration">
+          <svg viewBox="0 0 80 80" fill="none">
+            <rect x="10" y="50" width="12" height="20" fill="#2098d1"/>
+            <rect x="28" y="35" width="12" height="35" fill="#2098d1"/>
+            <rect x="46" y="45" width="12" height="25" fill="#2098d1"/>
+            <rect x="64" y="25" width="12" height="45" fill="#2098d1"/>
+            <path d="M5 75 L80 75" stroke="#0f151b" stroke-width="1"/>
+          </svg>
+        </div>
+        <h4>📉 ETF-stromen Onder Druk</h4>
+        <p>De spot crypto-ETF's beleefden een turbulente maand. Bitcoin-fondsen noteerden op één dag een uitstroom van $817,8 miljoen — de vierde grootste uitstroomdag sinds de lancering. Ethereum-fondsen verloren $155,7 miljoen. Begin en eind januari waren de flows positief, maar tijdens de macro-onrust keerden beleggers de markt tijdelijk de rug toe.</p>
       </div>
 
-      <div class="divider"></div>
+      <h3>Onzekerheid Rond de Fed</h3>
+      <p>Fed-voorzitter Jerome Powell kwam onder vuur te liggen via een strafrechtelijk onderzoek, wat de politieke druk op het rentebeleid verhoogde. Daarnaast groeide speculatie over Kevin Warsh als mogelijke opvolger van Powell. Warsh staat bekend om zijn strenge anti-inflatiehouding, wat beleggers nerveus maakt over toekomstig liquiditeitsbeleid. Minder ruime monetaire condities betekenen doorgaans minder kapitaal voor risicovolle assets zoals crypto.</p>
 
-      <h2>🏛️ Wall Street Omarmt Crypto</h2>
+      <p>Tegelijkertijd kondigde Trump een plan aan om $200 miljard aan hypotheekobligaties op te kopen om woonlasten te drukken — een onconventionele maatregel die de liquiditeit in de markt kan vergroten, maar ook vragen oproept over de scheiding tussen overheidsbeleid en centrale bankbeleid.</p>
+
+      <div class="decorative-line">
+        <svg viewBox="0 0 30 30" fill="none">
+          <circle cx="15" cy="15" r="12" stroke="currentColor" stroke-width="2"/>
+          <path d="M15 8 L15 22 M8 15 L22 15" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <h2>🏛️ Institutionele Doorbraken</h2>
       
-      <p>Ondanks de prijsvolatiliteit blijft de institutionele adoptie in een stroomversnelling. Januari leverde opvallende aankondigingen op:</p>
+      <div class="section-illustration">
+        <svg viewBox="0 0 120 120" fill="none">
+          <rect x="20" y="40" width="80" height="70" stroke="#2098d1" stroke-width="2" fill="none"/>
+          <path d="M60 10 L100 40 L20 40 Z" stroke="#2098d1" stroke-width="2" fill="none"/>
+          <rect x="35" y="60" width="15" height="30" stroke="#2098d1" stroke-width="1.5" fill="none"/>
+          <rect x="70" y="60" width="15" height="30" stroke="#2098d1" stroke-width="1.5" fill="none"/>
+          <circle cx="60" cy="25" r="5" fill="#2098d1"/>
+        </svg>
+      </div>
+      
+      <p>Ondanks de prijsschommelingen zette de institutionele adoptie door. Januari leverde concrete mijlpalen op:</p>
 
       <ul>
-        <li><strong>Morgan Stanley</strong> werd de eerste grote Amerikaanse bank die eigen spot crypto-ETF producten aanvroeg — een significante verschuiving van doorverkoper naar productaanbieder.</li>
-        <li><strong>Fidelity</strong> lanceerde een eigen stablecoin, specifiek gericht op institutionele settlement en treasury-operaties.</li>
-        <li><strong>BNY Mellon</strong> introduceerde blockchain-gebaseerde deposito's voor 24/7 cash management — de oudste bank van Amerika brengt haar kerninfrastructuur naar de blockchain.</li>
-        <li><strong>Strategy</strong> (voorheen MicroStrategy) vergrootte haar Bitcoin-positie met $2,1 miljard — hun grootste aankoop sinds 2024.</li>
+        <li><strong>Morgan Stanley</strong> werd de eerste grote Amerikaanse bank die aanvragen indiende voor eigen spot crypto-ETF's op bitcoin en ethereum. De bank wil niet langer alleen producten van derden doorverkopen, maar zelf verdienen aan transactiestromen en crypto-advies.</li>
+        <li><strong>Fidelity</strong> introduceerde een eigen stablecoin, gericht op institutionele verrekening en treasury-operaties. Stablecoins functioneren steeds vaker als basislaag voor financiële infrastructuur — ze bieden continue verplaatsbaarheid van waarde zonder de volatiliteit van crypto.</li>
+        <li><strong>Strategy</strong> (het voormalige MicroStrategy) kocht voor circa $2,1 miljard aan Bitcoin — de grootste aankoop van het bedrijf sinds 2024. De timing tijdens de koerscorrectie was opvallend; de aankoop werd grotendeels gefinancierd via aandelenuitgifte.</li>
+        <li><strong>Tether</strong> breidde zijn goudpositie verder uit en werd daarmee de grootste niet-overheidsbezitter van fysiek goud ter wereld. De reserves dienen zowel het bedrijf zelf als de dekking van Tether Gold (XAUT), een token die de goudprijs volgt. Deze diversificatie naast Amerikaanse staatsobligaties weerspiegelt een bredere trend naar hard asset backing.</li>
       </ul>
 
-      <p>De NYSE werkt via moederbedrijf ICE aan een platform voor tokenized effecten met continue handelsuren. Dit past in de bredere trend van tokenisatie die we al langer volgen.</p>
+      <h3>NYSE Bouwt aan Tokenized Securities</h3>
+      <p>De New York Stock Exchange werkt aan een platform voor tokenized effecten dat continue handel in Amerikaanse aandelen mogelijk moet maken. De belofte: snellere afwikkeling, toegang buiten reguliere beursuren, en de mogelijkheid om fractionele aandelen te verhandelen. Voor grote beleggers is vooral de combinatie van continue liquiditeit en efficiëntere settlement interessant.</p>
 
-      <div class="divider"></div>
-
-      <h2>⚖️ Regelgeving Neemt Vorm</h2>
-      
-      <p>In Washington nadert de Clarity Act een beslissende stemming in de Senaat. Deze wet moet eindelijk duidelijkheid scheppen over hoe verschillende crypto-assets geclassificeerd worden en welke toezichthouder waarvoor verantwoordelijk is. Na enkele aanpassingen op basis van industrie-feedback wordt brede steun verwacht.</p>
-
-      <p>Op het World Economic Forum in Davos was de toonzetting opvallend constructief. De discussie ging niet langer over óf crypto een plek krijgt in het financiële systeem, maar hóe die integratie vorm krijgt. Stablecoins en tokenisatie van traditionele assets domineerden de gesprekken.</p>
-
-      <div class="divider"></div>
-
-      <h2>🔗 Technologie & Netwerken</h2>
-
-      <div class="highlight-box">
-        <h4>Ethereum Breaking Records</h4>
-        <p>Het Ethereum-netwerk verwerkte meer dan 2,2 miljoen transacties per dag — een nieuw record. Opmerkelijk genoeg bleven de transactiekosten relatief laag, wat de effectiviteit van recente schaalbaarheidsupgrades onderstreept.</p>
+      <div class="decorative-line">
+        <svg viewBox="0 0 30 30" fill="none">
+          <polygon points="15,3 27,15 15,27 3,15" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
       </div>
 
-      <h3>Blockchain Trilemma: Opgelost?</h3>
-      <p>Ethereum-medeoprichter Vitalik Buterin claimde dat het beruchte blockchain-trilemma — de afweging tussen decentralisatie, veiligheid en schaalbaarheid — nu in de praktijk is opgelost. De combinatie van proof-of-stake, sharding-voorbereidingen en layer-2 oplossingen maakt het mogelijk om alle drie aspecten te optimaliseren zonder fundamentele compromissen.</p>
+      <h2>⚖️ Regelgeving in Beweging</h2>
+      
+      <div class="section-illustration">
+        <svg viewBox="0 0 120 120" fill="none">
+          <circle cx="60" cy="30" r="15" stroke="#2098d1" stroke-width="2" fill="none"/>
+          <path d="M60 45 L60 70" stroke="#2098d1" stroke-width="3"/>
+          <path d="M30 80 L90 80" stroke="#2098d1" stroke-width="3"/>
+          <path d="M30 80 L20 100 L40 100 Z" stroke="#2098d1" stroke-width="2" fill="none"/>
+          <path d="M90 80 L80 100 L100 100 Z" stroke="#2098d1" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      
+      <p>De Amerikaanse Clarity Act — een wet die duidelijkheid moet scheppen over de classificatie van crypto-assets — naderde een stemming in de Senaat. Na kritiek van Coinbase-CEO Brian Armstrong werd de timing aangepast, maar goedkeuring wordt nog steeds binnen enkele weken verwacht. De wet moet helderheid bieden over welke toezichthouder waarvoor verantwoordelijk is en welke regels gelden voor handelsplatformen.</p>
 
-      <h3>Solana's Volgende Hoofdstuk</h3>
-      <p>Voor Solana wordt 2026 een cruciaal jaar. Na een 2025 dat gedomineerd werd door memecoin-handel, groeit de druk om te bewijzen dat het netwerk meer te bieden heeft dan speculatieve use cases. De vraag is of het ecosysteem zich kan ontwikkelen richting serieuze DeFi en enterprise-toepassingen.</p>
+      <h3>Davos: Crypto Op De Agenda</h3>
+      <p>Op het World Economic Forum in Davos stonden digitale assets prominent op de agenda. Het gesprek draaide niet langer om de vraag óf crypto een plek krijgt in het financiële systeem, maar om de praktische implementatie. Stablecoins als betaalinfrastructuur en de tokenisatie van traditionele assets domineerden de discussies. Wanneer beleidsmakers en grote vermogensbeheerders dit onderwerp structureel bespreken, is dat een signaal dat de sector volwassener wordt.</p>
 
-      <div class="divider"></div>
+      <div class="decorative-line">
+        <svg viewBox="0 0 30 30" fill="none">
+          <circle cx="15" cy="15" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+          <circle cx="15" cy="15" r="5" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <h2>🔗 Technologie & Netwerken</h2>
+      
+      <div class="section-illustration">
+        <svg viewBox="0 0 120 120" fill="none">
+          <circle cx="60" cy="60" r="40" stroke="#2098d1" stroke-width="2" fill="none"/>
+          <circle cx="60" cy="20" r="8" fill="#2098d1"/>
+          <circle cx="95" cy="60" r="8" fill="#2098d1"/>
+          <circle cx="60" cy="100" r="8" fill="#2098d1"/>
+          <circle cx="25" cy="60" r="8" fill="#2098d1"/>
+          <path d="M60 28 L60 52 M87 60 L68 60 M60 92 L60 68 M33 60 L52 60" stroke="#2098d1" stroke-width="2"/>
+          <circle cx="60" cy="60" r="12" stroke="#2098d1" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="highlight-box">
+        <div class="box-illustration">
+          <svg viewBox="0 0 80 80" fill="none">
+            <polygon points="40,5 75,25 75,55 40,75 5,55 5,25" stroke="#2098d1" stroke-width="2" fill="none"/>
+            <polygon points="40,20 55,30 55,50 40,60 25,50 25,30" stroke="#2098d1" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h4>Ethereum Bereikt Nieuwe Pieken</h4>
+        <p>Het Ethereum-netwerk verwerkte begin januari meer dan 2,2 miljoen transacties per dag. Op 16 januari werd zelfs bijna 2,9 miljoen transacties bereikt — een nieuw record. Opmerkelijk: de transactiekosten bleven relatief laag, wat laat zien dat de schaalbaarheidsupgrades en layer-2 oplossingen hun werk doen.</p>
+      </div>
+
+      <h3>Technische Vooruitgang</h3>
+      <p>Ethereum-oprichter Vitalik Buterin claimde dat het bekende blockchain-trilemma — de afweging tussen decentralisatie, veiligheid en schaalbaarheid — nu in de praktijk is opgelost. Twee technologieën maken dit mogelijk: PeerDAS (Peer Data Availability Sampling), dat grotere datavolumes aankan zonder decentralisatie op te offeren, en ZK-EVMs (Zero-Knowledge Ethereum Virtual Machines), die smart contracts efficiënter uitvoeren via cryptografische bewijzen.</p>
+
+      <div class="decorative-line">
+        <svg viewBox="0 0 30 30" fill="none">
+          <path d="M15 3 L27 15 L15 27 L3 15 Z" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M15 8 L22 15 L15 22 L8 15 Z" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <h2>💎 Asset Developments</h2>
+      
+      <div class="section-illustration">
+        <svg viewBox="0 0 120 120" fill="none">
+          <path d="M60 10 L90 35 L90 75 L60 100 L30 75 L30 35 Z" stroke="#2098d1" stroke-width="2" fill="none"/>
+          <path d="M60 10 L60 100" stroke="#2098d1" stroke-width="1" stroke-dasharray="4"/>
+          <path d="M30 35 L90 75" stroke="#2098d1" stroke-width="1" stroke-dasharray="4"/>
+          <path d="M90 35 L30 75" stroke="#2098d1" stroke-width="1" stroke-dasharray="4"/>
+          <circle cx="60" cy="55" r="15" stroke="#2098d1" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      
+      <p>De belangrijkste ontwikkelingen binnen onze portfolio-assets:</p>
+
+      <h3>Ethereum (ETH)</h3>
+      <p>Naast de transactierecords profiteert Ethereum van technologische vooruitgang en groeiende layer-2 adoptie. Het netwerk evolueert van puur technologisch verhaal naar werkpaard voor DeFi, stablecoins en tokenized assets. De combinatie van mainnet-veiligheid en L2-efficiëntie trekt zowel retail als institutionele gebruikers.</p>
+
+      <h3>Bitcoin (BTC)</h3>
+      <p>De aankoop van Strategy ($2,1 miljard) toont dat grote partijen koerscorrecties benutten om posities uit te breiden. Tegelijk blijft Bitcoin gevoelig voor macro-factoren: Fed-beleid, liquiditeitsverwachtingen en geopolitieke spanningen sturen de koers. De ETF-infrastructuur zorgt voor professionelere prijsvorming, maar maakt de markt ook reactiever op institutionele flows.</p>
+
+      <h3>Chainlink (LINK)</h3>
+      <p>Chainlink lanceerde op 20 januari 24/5 U.S. Equities Streams — realtime koersdata voor Amerikaanse aandelen, 24 uur per dag, 5 dagen per week. Dit maakt de $80 biljoen grote aandelenmarkt toegankelijk voor DeFi-toepassingen. Met NYSE's plannen voor tokenized securities groeit de relevantie van Chainlink's oracle-netwerk als brug tussen traditionele en digitale markten.</p>
+
+      <h3>Bittensor (TAO)</h3>
+      <p>Bittensor blijft profiteren van de aanhoudende interesse in de kruising tussen AI en crypto. Het gedecentraliseerde machine learning netwerk zag in januari verdere groei in het aantal actieve subnets en validators. De combinatie van schaarse tokenomics en de structurele trend richting decentrale AI-infrastructuur maakt TAO een interessante positie voor beleggers die exposure zoeken naar de AI-narratief binnen crypto.</p>
+
+      <div class="decorative-line">
+        <svg viewBox="0 0 30 30" fill="none">
+          <circle cx="15" cy="15" r="12" stroke="currentColor" stroke-width="2" fill="none"/>
+          <circle cx="15" cy="10" r="3" fill="currentColor"/>
+          <path d="M15 15 L15 22" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
 
       <h2>🔮 Wat We Volgen</h2>
       
+      <div class="section-illustration">
+        <svg viewBox="0 0 120 120" fill="none">
+          <circle cx="60" cy="60" r="45" stroke="#2098d1" stroke-width="1" stroke-dasharray="5"/>
+          <circle cx="60" cy="60" r="35" stroke="#2098d1" stroke-width="1.5"/>
+          <circle cx="60" cy="60" r="25" stroke="#2098d1" stroke-width="2"/>
+          <circle cx="60" cy="60" r="8" fill="#2098d1"/>
+          <path d="M60 15 L60 25" stroke="#2098d1" stroke-width="2"/>
+          <path d="M60 95 L60 105" stroke="#2098d1" stroke-width="2"/>
+          <path d="M15 60 L25 60" stroke="#2098d1" stroke-width="2"/>
+          <path d="M95 60 L105 60" stroke="#2098d1" stroke-width="2"/>
+        </svg>
+      </div>
+      
       <ul>
-        <li><strong>Korte termijn:</strong> De markt blijft gevoelig voor macro-nieuws en Fed-communicatie. De Clarity Act stemming kan voor een sentiment-shift zorgen.</li>
-        <li><strong>Middellange termijn:</strong> De institutionele golf is niet te stoppen. Wanneer Morgan Stanley, Fidelity én BNY Mellon allemaal crypto-producten lanceren, legitimeert dat de asset class voor een veel breder publiek.</li>
-        <li><strong>Thema's:</strong> Stablecoins als financiële infrastructuur, tokenisatie van traditionele assets, en de convergentie van AI met blockchain-technologie.</li>
+        <li><strong>Clarity Act:</strong> Goedkeuring kan juridische onzekerheid wegnemen en institutionele adoptie versnellen. Verwacht binnen weken.</li>
+        <li><strong>Fed-dynamiek:</strong> De spanning tussen politieke druk en centrale-bank onafhankelijkheid blijft een risicofactor. Eventuele wijzigingen in de Fed-top kunnen impact hebben op liquiditeitsverwachtingen.</li>
+        <li><strong>Institutionele bouwstenen:</strong> Morgan Stanley, Fidelity en Tether leggen de infrastructuur voor bredere adoptie. Deze ontwikkelingen zijn structureel belangrijker dan dagelijkse koersbewegingen.</li>
+        <li><strong>Tokenisatie:</strong> NYSE en Chainlink bouwen aan de technische basis voor continue handel in traditionele assets. Dit thema zal 2026 vormgeven.</li>
+        <li><strong>AI x Crypto:</strong> Nieuwe standaarden zoals ERC-8004 (native asset swaps) en x402 (HTTP micropayments) leggen de basis voor autonome AI-agents die zelfstandig kunnen handelen en betalen. Deze infrastructuur wordt cruciaal naarmate AI en blockchain verder integreren.</li>
       </ul>
 
       <div class="cta-section">
