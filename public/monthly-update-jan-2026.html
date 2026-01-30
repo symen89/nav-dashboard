@@ -151,6 +151,55 @@
     li {
       margin-bottom: 10px;
     }
+    
+    /* Mobile responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .header {
+        padding: 25px 20px;
+      }
+      .header h1 {
+        font-size: 24px;
+      }
+      .content {
+        padding: 20px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .stat-card {
+        padding: 15px;
+      }
+      .stat-card .value {
+        font-size: 20px;
+      }
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .performance-table {
+        font-size: 13px;
+      }
+      .performance-table th, .performance-table td {
+        padding: 8px 6px;
+      }
+      .cta-button {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+      }
+      .cta-button + .cta-button {
+        margin-left: 0 !important;
+      }
+      .footer {
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
