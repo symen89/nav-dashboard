@@ -605,7 +605,6 @@ export default function SharePriceDashboard() {
                 />
                 <p className="text-sm font-bold text-[#2098d1]">{asset.symbol}</p>
                 <p className="text-lg font-bold text-[#0f151b]">{asset.pct}%</p>
-                <p className="text-xs text-[#6b7585]">{asset.balance.toLocaleString('nl-NL', { maximumFractionDigits: 2 })}</p>
               </div>
             ))}
           </div>
