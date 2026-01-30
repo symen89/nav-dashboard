@@ -314,17 +314,7 @@ export default function SharePriceDashboard() {
         </div>
       </div>
       
-      {/* Newsletter Button */}
-      <div className="max-w-6xl mx-auto px-4 py-3">
-        <a 
-          href="/monthly-update-jan-2026.html" 
-          className="inline-flex items-center px-4 py-2 bg-[#2098d1] text-white rounded-lg text-sm font-medium hover:bg-[#1a7ab0] transition-colors"
-        >
-          📰 Laatste Newsletter
-        </a>
-      </div>
-      
-      <div className="max-w-6xl mx-auto px-4">
+<div className="max-w-6xl mx-auto px-4 pt-4">
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
