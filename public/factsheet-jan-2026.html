@@ -13,40 +13,114 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Space Grotesk', sans-serif;
-      background: #ffffff;
+      background: #f4f4f4;
       color: #0f151b;
       font-size: 11px;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     .page {
       width: 210mm;
       min-height: 297mm;
-      padding: 15mm;
       margin: 0 auto;
       background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
+    
+    /* Header - Newsletter style */
     .header {
+      background: linear-gradient(135deg, #0f151b 0%, #1e2731 100%);
+      padding: 30px 25mm;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 3px solid #2098d1;
+      align-items: center;
     }
-    .logo { max-width: 150px; }
+    .logo { max-width: 140px; }
     .header-right { text-align: right; }
-    .header-right h1 { font-size: 22px; color: #0f151b; margin-bottom: 5px; }
-    .header-right .date { color: #6b7585; font-size: 12px; }
+    .header-right h1 { 
+      font-size: 24px; 
+      color: #ffffff; 
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+    .header-right .subtitle { 
+      color: #2098d1; 
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .header-right .date { 
+      color: #8b95a5; 
+      font-size: 12px;
+      margin-top: 5px;
+    }
     
-    .grid { display: grid; gap: 15px; }
+    .content {
+      padding: 20mm 25mm;
+    }
+    
+    /* NAV Highlight */
+    .nav-highlight {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-radius: 12px;
+      padding: 25px;
+      border-left: 4px solid #2098d1;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-highlight .label {
+      font-size: 12px;
+      color: #6b7585;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .nav-highlight .value {
+      font-size: 36px;
+      font-weight: 700;
+      color: #0f151b;
+    }
+    .nav-highlight .date {
+      font-size: 11px;
+      color: #6b7585;
+      margin-top: 5px;
+    }
+    .nav-highlight .change {
+      text-align: right;
+    }
+    .nav-highlight .change-value {
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .nav-highlight .change-value.positive { color: #22c55e; }
+    .nav-highlight .change-value.negative { color: #ef4444; }
+    
+    .grid { display: grid; gap: 20px; }
     .grid-2 { grid-template-columns: 1fr 1fr; }
     .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
     .grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
     
+    /* Section styling - Newsletter style */
+    .section { margin-top: 25px; }
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f151b;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .icon {
+      font-size: 18px;
+    }
+    
+    /* Cards */
     .card {
       background: #f8f9fa;
-      border-radius: 8px;
-      padding: 15px;
+      border-radius: 10px;
+      padding: 18px;
       border-left: 4px solid #2098d1;
     }
     .card h3 {
@@ -57,7 +131,7 @@
       margin-bottom: 8px;
     }
     .card .value {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
       color: #0f151b;
     }
@@ -65,331 +139,362 @@
     .card .value.negative { color: #ef4444; }
     .card .sub { font-size: 10px; color: #6b7585; margin-top: 3px; }
     
-    .section { margin-top: 20px; }
-    .section-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: #0f151b;
-      margin-bottom: 12px;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    
-    table { width: 100%; border-collapse: collapse; font-size: 10px; }
-    th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e5e7eb; }
     th { background: #f8f9fa; font-weight: 600; color: #6b7585; text-transform: uppercase; font-size: 9px; }
+    td.positive { color: #22c55e; }
+    td.negative { color: #ef4444; }
     
+    /* Portfolio bar */
     .portfolio-bar {
       display: flex;
-      height: 24px;
-      border-radius: 4px;
+      height: 28px;
+      border-radius: 6px;
       overflow: hidden;
-      margin: 10px 0;
+      margin: 12px 0;
     }
-    .portfolio-bar div { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 9px; font-weight: 600; }
+    .portfolio-bar div { 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color: #fff; 
+      font-size: 10px; 
+      font-weight: 600; 
+    }
     
     .portfolio-legend {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 12px;
+      margin-top: 12px;
     }
     .legend-item {
       display: flex;
       align-items: center;
-      gap: 5px;
-      font-size: 10px;
+      gap: 6px;
+      font-size: 11px;
     }
     .legend-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 2px;
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
     }
     
+    /* Trade Highlights */
+    .trade-highlights {
+      background: linear-gradient(135deg, #0f151b 0%, #1e2731 100%);
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 25px;
+      color: #ffffff;
+    }
+    .trade-highlights .section-title {
+      color: #ffffff;
+      border-bottom-color: rgba(255,255,255,0.2);
+    }
+    .trade-highlight-item {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .trade-highlight-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .trade-highlight-item h4 {
+      color: #2098d1;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .trade-highlight-item p {
+      color: #b8c0cc;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+    .trade-stat {
+      display: inline-block;
+      background: rgba(32, 152, 209, 0.2);
+      color: #2098d1;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    
+    /* Footer */
     .footer {
-      margin-top: 20px;
-      padding-top: 15px;
-      border-top: 1px solid #e5e7eb;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 2px solid #e5e7eb;
       display: flex;
       justify-content: space-between;
-      font-size: 9px;
+      font-size: 10px;
       color: #6b7585;
-    }
-    .disclaimer {
-      margin-top: 15px;
-      padding: 10px;
-      background: #f8f9fa;
-      border-radius: 4px;
-      font-size: 8px;
-      color: #6b7585;
-      line-height: 1.3;
     }
     
-    .highlight-box {
-      background: linear-gradient(135deg, #0f151b 0%, #1e2731 100%);
-      color: #ffffff;
+    .disclaimer {
+      margin-top: 20px;
       padding: 15px;
+      background: #f8f9fa;
       border-radius: 8px;
-      margin-bottom: 15px;
+      font-size: 9px;
+      color: #6b7585;
+      line-height: 1.4;
     }
-    .highlight-box h2 { font-size: 12px; color: #8b95a5; margin-bottom: 5px; }
-    .highlight-box .big { font-size: 32px; font-weight: 700; }
-    .highlight-box .small { font-size: 11px; color: #8b95a5; margin-top: 5px; }
     
     /* Mobile responsive */
     @media (max-width: 768px) {
       .page {
         width: 100%;
         min-height: auto;
-        padding: 15px;
       }
       .header {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 15px;
+        padding: 25px 20px;
       }
-      .header-right {
+      .header-right { text-align: center; }
+      .header-right h1 { font-size: 20px; }
+      .content { padding: 20px; }
+      .nav-highlight {
+        flex-direction: column;
         text-align: center;
+        gap: 15px;
       }
-      .header-right h1 {
-        font-size: 18px;
-      }
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-      .grid-4 {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-      .card {
-        padding: 10px;
-      }
-      .card h3 {
-        font-size: 9px;
-      }
-      .card .value {
-        font-size: 18px;
-      }
-      .card .sub {
-        font-size: 9px;
-      }
-      .highlight-box {
-        padding: 15px;
-        text-align: center;
-      }
-      .highlight-box .big {
-        font-size: 28px;
-      }
-      .section-title {
-        font-size: 13px;
-      }
-      table {
-        font-size: 10px;
-      }
-      th, td {
-        padding: 6px 4px;
-      }
+      .nav-highlight .change { text-align: center; }
+      .grid-2, .grid-4 { grid-template-columns: 1fr 1fr; }
+      .card .value { font-size: 18px; }
       .footer {
         flex-direction: column;
         gap: 15px;
         text-align: center;
       }
-      .footer div {
-        text-align: center !important;
-      }
-      .portfolio-legend {
-        justify-content: center;
-      }
-      .disclaimer {
-        font-size: 9px;
-      }
+      .footer div { text-align: center !important; }
+    }
+    
+    @media (max-width: 480px) {
+      .grid-2, .grid-4 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="page">
     <div class="header">
-      <img src="https://adamcapital.nl/assets/img/logo-adam-blauw.svg" alt="A-DAM Capital" class="logo">
+      <img src="https://adamcapital.nl/assets/img/logo-adam-wit.svg" alt="A-DAM Capital" class="logo">
       <div class="header-right">
         <h1>Fonds A Factsheet</h1>
+        <div class="subtitle">Monthly Performance Report</div>
         <div class="date">Januari 2026</div>
       </div>
     </div>
 
-    <div class="highlight-box">
-      <div>
-        <h2>NAV per Participatie</h2>
-        <div class="big">€861,81</div>
-        <div class="small">Datum: 29 januari 2026</div>
-      </div>
-    </div>
-
-    <div class="grid grid-2" style="margin-bottom: 15px;">
-      <div class="section" style="margin-top: 0;">
-        <div class="section-title">🏛️ Het Fonds</div>
-        <p style="font-size: 10px; line-height: 1.5; color: #0f151b;">
-          A-DAM Capital Fonds A investeert in de groei van de crypto-markt. We hanteren een gedisciplineerde buy-and-hold strategie, met focus op de belangrijkste cryptocurrencies — assets met een bewezen track record en sterke fundamentals.
-        </p>
-        <p style="font-size: 10px; line-height: 1.5; color: #0f151b; margin-top: 8px;">
-          Ons team brengt jarenlange ervaring samen in crypto-handel, vermogensbeheer en blockchain-technologie. Die combinatie van marktkennis en operationele basis stelt ons in staat asymmetrische kansen te identificeren, met institutioneel risicobeheer als uitgangspunt.
-        </p>
-      </div>
-      <div class="section" style="margin-top: 0;">
-        <div class="section-title">🎯 Fonds Strategie</div>
-        <p style="font-size: 10px; line-height: 1.5; color: #0f151b; margin-bottom: 10px;">
-          De allocatie is gebaseerd op fundamentele analyse en marktomstandigheden. Huidige strategische verdeling:
-        </p>
-        <table>
-          <tr><td>● Ethereum (WETH)</td><td><strong>55%</strong></td></tr>
-          <tr><td>● Bitcoin (WBTC)</td><td><strong>30%</strong></td></tr>
-          <tr><td>● Infra & AI (LINK, TAO)</td><td><strong>13%</strong></td></tr>
-          <tr><td>● Cash (EUROC)</td><td><strong>2%</strong></td></tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="grid grid-4">
-      <div class="card">
-        <h3>MTD Rendement</h3>
-        <div class="value negative">-1,5%</div>
-        <div class="sub">Januari 2026</div>
-      </div>
-      <div class="card">
-        <h3>YTD Rendement</h3>
-        <div class="value negative">-1,5%</div>
-        <div class="sub">2026</div>
-      </div>
-      <div class="card">
-        <h3>1 Jaar Rendement</h3>
-        <div class="value negative">-35,8%</div>
-        <div class="sub">jan 2025 - jan 2026</div>
-      </div>
-      <div class="card">
-        <h3>Sinds Oprichting</h3>
-        <div class="value negative">-13,8%</div>
-        <div class="sub">Maart 2022</div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">📊 Performance vs Benchmark</div>
-      <table>
-        <tr>
-          <th>Periode</th>
-          <th>A-DAM Capital</th>
-          <th>CCI30 Index</th>
-          <th>Alpha</th>
-        </tr>
-        <tr>
-          <td>MTD (Jan 2026)</td>
-          <td class="negative">-1,5%</td>
-          <td>-0,0%</td>
-          <td class="negative">-1,5%</td>
-        </tr>
-        <tr>
-          <td>2025</td>
-          <td class="negative">-32,6%</td>
-          <td class="negative">-33,3%</td>
-          <td class="positive">+0,7%</td>
-        </tr>
-        <tr>
-          <td>2024</td>
-          <td class="positive">+39,3%</td>
-          <td class="positive">+72,6%</td>
-          <td class="negative">-33,3%</td>
-        </tr>
-        <tr>
-          <td>2023</td>
-          <td class="positive">+81,6%</td>
-          <td class="positive">+43,7%</td>
-          <td class="positive">+37,9%</td>
-        </tr>
-        <tr>
-          <td>Since Inception</td>
-          <td class="negative">-13,8%</td>
-          <td class="negative">-16,0%</td>
-          <td class="positive">+2,2%</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="grid grid-2" style="margin-top: 15px;">
-      <div class="section">
-        <div class="section-title">💼 Portfolio Allocatie</div>
-        <div class="portfolio-bar">
-          <div style="width: 55.4%; background: #2098d1;">WETH</div>
-          <div style="width: 30%; background: #f97316;">WBTC</div>
-          <div style="width: 8.9%; background: #22c55e;">LINK</div>
-          <div style="width: 5.7%; background: #8b5cf6;"></div>
+    <div class="content">
+      <!-- NAV Highlight -->
+      <div class="nav-highlight">
+        <div>
+          <div class="label">NAV per Participatie</div>
+          <div class="value">€861,81</div>
+          <div class="date">29 januari 2026</div>
         </div>
-        <div class="portfolio-legend">
-          <div class="legend-item"><div class="legend-dot" style="background: #2098d1;"></div>WETH 55,4%</div>
-          <div class="legend-item"><div class="legend-dot" style="background: #f97316;"></div>WBTC 30,0%</div>
-          <div class="legend-item"><div class="legend-dot" style="background: #22c55e;"></div>LINK 8,9%</div>
-          <div class="legend-item"><div class="legend-dot" style="background: #8b5cf6;"></div>WTAO 4,1%</div>
-          <div class="legend-item"><div class="legend-dot" style="background: #6b7585;"></div>Overig 1,6%</div>
+        <div class="change">
+          <div class="label">MTD Rendement</div>
+          <div class="change-value negative">-1,5%</div>
         </div>
       </div>
-      
+
+      <!-- Performance Cards -->
+      <div class="grid grid-4">
+        <div class="card">
+          <h3>MTD</h3>
+          <div class="value negative">-1,5%</div>
+          <div class="sub">Januari 2026</div>
+        </div>
+        <div class="card">
+          <h3>YTD</h3>
+          <div class="value negative">-1,5%</div>
+          <div class="sub">2026</div>
+        </div>
+        <div class="card">
+          <h3>1 Jaar</h3>
+          <div class="value negative">-35,8%</div>
+          <div class="sub">jan '25 - jan '26</div>
+        </div>
+        <div class="card">
+          <h3>Sinds Start</h3>
+          <div class="value negative">-13,8%</div>
+          <div class="sub">Maart 2022</div>
+        </div>
+      </div>
+
+      <!-- Two columns: About & Strategy -->
+      <div class="grid grid-2">
+        <div class="section" style="margin-top: 20px;">
+          <div class="section-title"><span class="icon">🏛️</span> Het Fonds</div>
+          <p style="font-size: 11px; line-height: 1.6; color: #374151;">
+            A-DAM Capital Fonds A investeert in de groei van de crypto-markt. We hanteren een gedisciplineerde buy-and-hold strategie, met focus op assets met een bewezen track record en sterke fundamentals.
+          </p>
+          <p style="font-size: 11px; line-height: 1.6; color: #374151; margin-top: 10px;">
+            Ons team combineert jarenlange ervaring in crypto-handel, vermogensbeheer en blockchain-technologie om asymmetrische kansen te identificeren met institutioneel risicobeheer.
+          </p>
+        </div>
+        <div class="section" style="margin-top: 20px;">
+          <div class="section-title"><span class="icon">🎯</span> Strategie</div>
+          <table>
+            <tr><td>● Ethereum (WETH)</td><td style="text-align: right;"><strong>55%</strong></td></tr>
+            <tr><td>● Bitcoin (WBTC)</td><td style="text-align: right;"><strong>30%</strong></td></tr>
+            <tr><td>● Infra & AI (LINK, TAO)</td><td style="text-align: right;"><strong>13%</strong></td></tr>
+            <tr><td>● Cash (EUROC)</td><td style="text-align: right;"><strong>2%</strong></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Trade Highlights -->
+      <div class="trade-highlights">
+        <div class="section-title" style="margin-top: 0;"><span class="icon">📈</span> Trade Highlights</div>
+        
+        <div class="trade-highlight-item">
+          <h4>Core Holding</h4>
+          <p>Onze kernposities in Ethereum, Bitcoin, Chainlink en Bittensor blijven ongewijzigd. Ethereum blijft de grootste allocatie gezien de sterke fundamentals en het transactierecord van 2,9 miljoen dagelijkse transacties. De recente marktcorrectie bood mogelijkheden om posities te optimaliseren binnen de bestaande allocatie.</p>
+        </div>
+        
+        <div class="trade-highlight-item">
+          <h4>Tactische Aanpassingen</h4>
+          <p>Gedurende januari hebben we de ETF-uitstroom en macro-onzekerheid gemonitord. De volatiliteit tussen $88K-$98K voor Bitcoin creëerde rebalancing-momenten. Onze Chainlink-positie profiteerde van de lancering van 24/5 U.S. Equities Streams, wat de relevantie van het oracle-netwerk versterkt.</p>
+          <span class="trade-stat">LINK +8,9% allocatie</span>
+        </div>
+        
+        <div class="trade-highlight-item">
+          <h4>Bittensor (TAO) Positie</h4>
+          <p>De TAO-positie is in januari verder opgebouwd vanwege de aanhoudende interesse in de kruising tussen AI en crypto. Het gedecentraliseerde machine learning netwerk toonde groei in actieve subnets. De combinatie van schaarse tokenomics en de structurele AI-trend maakt dit een strategische langetermijnpositie.</p>
+          <span class="trade-stat">TAO 4,1% allocatie</span>
+        </div>
+      </div>
+
+      <!-- Performance vs Benchmark -->
       <div class="section">
-        <div class="section-title">📈 Risico Metrics</div>
+        <div class="section-title"><span class="icon">📊</span> Performance vs Benchmark</div>
         <table>
-          <tr><td>Volatiliteit (ann.)</td><td><strong>~65%</strong></td></tr>
-          <tr><td>Sharpe Ratio</td><td><strong>-0,08</strong></td></tr>
-          <tr><td>Max Drawdown (YTD)</td><td><strong>-13,5%</strong></td></tr>
-          <tr><td>Beta vs CCI30</td><td><strong>0,85</strong></td></tr>
-          <tr><td>Correlatie CCI30</td><td><strong>92%</strong></td></tr>
-          <tr><td>Win Rate (dagen)</td><td><strong>48%</strong></td></tr>
+          <tr>
+            <th>Periode</th>
+            <th>A-DAM Capital</th>
+            <th>CCI30 Index</th>
+            <th>Alpha</th>
+          </tr>
+          <tr>
+            <td>MTD (Jan 2026)</td>
+            <td class="negative">-1,5%</td>
+            <td>-0,0%</td>
+            <td class="negative">-1,5%</td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td class="negative">-32,6%</td>
+            <td class="negative">-33,3%</td>
+            <td class="positive">+0,7%</td>
+          </tr>
+          <tr>
+            <td>2024</td>
+            <td class="positive">+39,3%</td>
+            <td class="positive">+72,6%</td>
+            <td class="negative">-33,3%</td>
+          </tr>
+          <tr>
+            <td>2023</td>
+            <td class="positive">+81,6%</td>
+            <td class="positive">+43,7%</td>
+            <td class="positive">+37,9%</td>
+          </tr>
+          <tr>
+            <td>Since Inception</td>
+            <td class="negative">-13,8%</td>
+            <td class="negative">-16,0%</td>
+            <td class="positive">+2,2%</td>
+          </tr>
         </table>
       </div>
-    </div>
 
-    <div class="grid grid-2" style="margin-top: 15px;">
-      <div class="section">
-        <div class="section-title">💰 Fonds Details</div>
-        <table>
-          <tr><td>Structuur</td><td>Fonds voor Gemene Rekening (open-end)</td></tr>
-          <tr><td>Beheerder</td><td>Amsterdam Digital Asset Management B.V.</td></tr>
-          <tr><td>Bewaarder</td><td>Stichting Toezicht A-DAM</td></tr>
-          <tr><td>Administrator</td><td>IQEQ</td></tr>
-          <tr><td>Bank</td><td>NEO</td></tr>
-          <tr><td>Exchange</td><td>Kraken</td></tr>
-          <tr><td>Minimale investering</td><td>€100.000</td></tr>
-        </table>
+      <!-- Portfolio & Risk -->
+      <div class="grid grid-2">
+        <div class="section">
+          <div class="section-title"><span class="icon">💼</span> Portfolio Allocatie</div>
+          <div class="portfolio-bar">
+            <div style="width: 55.4%; background: #2098d1;">WETH</div>
+            <div style="width: 30%; background: #f97316;">WBTC</div>
+            <div style="width: 8.9%; background: #22c55e;">LINK</div>
+            <div style="width: 5.7%; background: #8b5cf6;"></div>
+          </div>
+          <div class="portfolio-legend">
+            <div class="legend-item"><div class="legend-dot" style="background: #2098d1;"></div>WETH 55,4%</div>
+            <div class="legend-item"><div class="legend-dot" style="background: #f97316;"></div>WBTC 30,0%</div>
+            <div class="legend-item"><div class="legend-dot" style="background: #22c55e;"></div>LINK 8,9%</div>
+            <div class="legend-item"><div class="legend-dot" style="background: #8b5cf6;"></div>WTAO 4,1%</div>
+            <div class="legend-item"><div class="legend-dot" style="background: #6b7585;"></div>Overig 1,6%</div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <div class="section-title"><span class="icon">📈</span> Risico Metrics</div>
+          <table>
+            <tr><td>Volatiliteit (ann.)</td><td style="text-align: right;"><strong>~65%</strong></td></tr>
+            <tr><td>Sharpe Ratio</td><td style="text-align: right;"><strong>-0,08</strong></td></tr>
+            <tr><td>Max Drawdown (YTD)</td><td style="text-align: right;"><strong>-13,5%</strong></td></tr>
+            <tr><td>Beta vs CCI30</td><td style="text-align: right;"><strong>0,85</strong></td></tr>
+            <tr><td>Correlatie CCI30</td><td style="text-align: right;"><strong>92%</strong></td></tr>
+          </table>
+        </div>
       </div>
-      
-      <div class="section">
-        <div class="section-title">📋 Kosten</div>
-        <table>
-          <tr><td>Beheervergoeding</td><td><strong>2% per jaar</strong></td></tr>
-          <tr><td>Prestatievergoeding</td><td><strong>20%</strong> (high-water mark)</td></tr>
-          <tr><td>Overige kosten</td><td>Max. 2% per jaar</td></tr>
-          <tr><td>Instapkosten</td><td>0%</td></tr>
-          <tr><td>In-/uittreding</td><td>Maandelijks</td></tr>
-        </table>
-      </div>
-    </div>
 
-    <div class="footer">
-      <div>
-        <strong>A-DAM Capital</strong><br>
-        Amsterdam Digital Asset Management B.V.<br>
-        Eerste Amstelvlietpad 84
+      <!-- Fund Details & Costs -->
+      <div class="grid grid-2">
+        <div class="section">
+          <div class="section-title"><span class="icon">💰</span> Fonds Details</div>
+          <table>
+            <tr><td>Structuur</td><td style="text-align: right;">FGR (open-end)</td></tr>
+            <tr><td>Beheerder</td><td style="text-align: right;">A-DAM B.V.</td></tr>
+            <tr><td>Bewaarder</td><td style="text-align: right;">Stichting Toezicht A-DAM</td></tr>
+            <tr><td>Administrator</td><td style="text-align: right;">IQEQ</td></tr>
+            <tr><td>Minimale investering</td><td style="text-align: right;">€100.000</td></tr>
+          </table>
+        </div>
+        
+        <div class="section">
+          <div class="section-title"><span class="icon">📋</span> Kosten</div>
+          <table>
+            <tr><td>Beheervergoeding</td><td style="text-align: right;"><strong>2% p.a.</strong></td></tr>
+            <tr><td>Prestatievergoeding</td><td style="text-align: right;"><strong>20%</strong> (HWM)</td></tr>
+            <tr><td>Overige kosten</td><td style="text-align: right;">Max. 2% p.a.</td></tr>
+            <tr><td>In-/uittreding</td><td style="text-align: right;">Maandelijks</td></tr>
+          </table>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <strong>Contact</strong><br>
-        info@adamcapital.nl<br>
-        www.adamcapital.nl
-      </div>
-      <div style="text-align: right;">
-        <strong>Investor Portal</strong><br>
-        mijnadam.nl
-      </div>
-    </div>
 
-    <div class="disclaimer">
-      <strong>Disclaimer:</strong> Dit document is uitsluitend bedoeld voor informatieve doeleinden en vormt geen beleggingsadvies, aanbod of uitnodiging tot het doen van een aanbod tot het kopen of verkopen van financiële instrumenten. In het verleden behaalde resultaten bieden geen garantie voor de toekomst. De waarde van beleggingen kan fluctueren. Beleggers kunnen hun inleg geheel of gedeeltelijk verliezen. A-DAM Capital is geregistreerd als beheerder van een beleggingsinstelling bij de AFM.
+      <!-- Footer -->
+      <div class="footer">
+        <div>
+          <strong>A-DAM Capital</strong><br>
+          Amsterdam Digital Asset Management B.V.<br>
+          Eerste Amstelvlietpad 84
+        </div>
+        <div style="text-align: center;">
+          <strong>Contact</strong><br>
+          info@adamcapital.nl<br>
+          www.adamcapital.nl
+        </div>
+        <div style="text-align: right;">
+          <strong>Investor Portal</strong><br>
+          mijnadam.nl
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> Dit document is uitsluitend bedoeld voor informatieve doeleinden en vormt geen beleggingsadvies, aanbod of uitnodiging tot het doen van een aanbod tot het kopen of verkopen van financiële instrumenten. In het verleden behaalde resultaten bieden geen garantie voor de toekomst. De waarde van beleggingen kan fluctueren. Beleggers kunnen hun inleg geheel of gedeeltelijk verliezen. A-DAM Capital is geregistreerd als beheerder van een beleggingsinstelling bij de AFM.
+      </div>
     </div>
   </div>
 </body>
