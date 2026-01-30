@@ -160,6 +160,9 @@
       .header {
         padding: 25px 20px;
       }
+      .header img {
+        max-width: 150px;
+      }
       .header h1 {
         font-size: 24px;
       }
@@ -167,37 +170,55 @@
         padding: 20px;
       }
       h2 {
-        font-size: 18px;
+        font-size: 16px;
+        margin-top: 25px;
       }
       .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 10px;
       }
       .stat-card {
-        padding: 15px;
+        padding: 12px;
+      }
+      .stat-card .label {
+        font-size: 10px;
       }
       .stat-card .value {
-        font-size: 20px;
+        font-size: 18px;
       }
       .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .portfolio-item {
+        padding: 10px;
+      }
+      .portfolio-item .pct {
+        font-size: 16px;
+      }
       .performance-table {
-        font-size: 13px;
+        font-size: 11px;
       }
       .performance-table th, .performance-table td {
-        padding: 8px 6px;
+        padding: 8px 4px;
       }
       .cta-button {
         display: block;
         text-align: center;
         margin: 10px 0;
+        padding: 12px 20px;
       }
       .cta-button + .cta-button {
         margin-left: 0 !important;
       }
       .footer {
         padding: 20px;
+        font-size: 12px;
+      }
+      ul {
+        padding-left: 15px;
+      }
+      li {
+        font-size: 14px;
       }
     }
   </style>
