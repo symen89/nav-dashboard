@@ -302,24 +302,26 @@ export default function SharePriceDashboard() {
   return (
     <div className="min-h-screen text-[#0f151b] bg-[#f4f4f4]">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-[#0f151b] to-[#1e2731] text-white py-8 px-4 mb-6">
-        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <img src="https://adamcapital.nl/assets/img/logo-adam-wit.svg" alt="A-DAM Capital" className="h-10" />
-            <div>
-              <h1 className="text-2xl font-bold">Prijs per Participatie</h1>
-              <p className="text-[#8b95a5] text-sm">
-                {formatDate(stats.startDate)} - {formatDate(stats.endDate)}
-              </p>
-            </div>
+      <div className="bg-gradient-to-r from-[#0f151b] to-[#1e2731] text-white py-8 px-4">
+        <div className="max-w-6xl mx-auto flex items-center gap-4">
+          <img src="https://adamcapital.nl/assets/img/logo-adam-wit.svg" alt="A-DAM Capital" className="h-10" />
+          <div>
+            <h1 className="text-2xl font-bold">Prestaties Fonds A</h1>
+            <p className="text-[#8b95a5] text-sm">
+              {formatDate(stats.startDate)} - {formatDate(stats.endDate)}
+            </p>
           </div>
-          <a 
-            href="/monthly-update-jan-2026.html" 
-            className="px-4 py-2 bg-[#2098d1] text-white rounded-lg text-sm font-medium hover:bg-[#1a7ab0] transition-colors"
-          >
-            📰 Laatste Newsletter
-          </a>
         </div>
+      </div>
+      
+      {/* Newsletter Button */}
+      <div className="max-w-6xl mx-auto px-4 py-3">
+        <a 
+          href="/monthly-update-jan-2026.html" 
+          className="inline-flex items-center px-4 py-2 bg-[#2098d1] text-white rounded-lg text-sm font-medium hover:bg-[#1a7ab0] transition-colors"
+        >
+          📰 Laatste Newsletter
+        </a>
       </div>
       
       <div className="max-w-6xl mx-auto px-4">
