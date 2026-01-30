@@ -300,14 +300,18 @@ export default function SharePriceDashboard() {
   const formatDate = (d: string) => new Date(d).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' });
 
   return (
-    <div className="p-4 min-h-screen text-[#0f151b] bg-[#f4f4f4]">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <div>
-            <h1 className="text-2xl font-bold mb-1 text-[#0f151b]">A-DAM Capital Share Price</h1>
-            <p className="text-[#6b7585] text-sm">
-              {formatDate(stats.startDate)} - {formatDate(stats.endDate)} ({stats.days} datapunten)
-            </p>
+    <div className="min-h-screen text-[#0f151b] bg-[#f4f4f4]">
+      {/* Header Banner */}
+      <div className="bg-gradient-to-r from-[#0f151b] to-[#1e2731] text-white py-8 px-4 mb-6">
+        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <img src="https://adamcapital.nl/assets/img/logo-adam-wit.svg" alt="A-DAM Capital" className="h-10" />
+            <div>
+              <h1 className="text-2xl font-bold">Share Price Dashboard</h1>
+              <p className="text-[#8b95a5] text-sm">
+                {formatDate(stats.startDate)} - {formatDate(stats.endDate)}
+              </p>
+            </div>
           </div>
           <a 
             href="/monthly-update-jan-2026.html" 
@@ -316,6 +320,9 @@ export default function SharePriceDashboard() {
             📰 Laatste Newsletter
           </a>
         </div>
+      </div>
+      
+      <div className="max-w-6xl mx-auto px-4">
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
@@ -620,9 +627,10 @@ export default function SharePriceDashboard() {
           </div>
         </div>
 
-        <p className="text-[#6b7585] text-xs text-center mt-4">
+        <p className="text-[#6b7585] text-xs text-center mt-4 pb-4">
           Bron: historic_nav + adam-nav-api • CCI30: cci30.com • Portfolio: octav.fi
         </p>
+      </div>
       </div>
     </div>
   );
