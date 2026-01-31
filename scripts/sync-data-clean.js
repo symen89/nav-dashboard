@@ -179,7 +179,7 @@ async function main() {
     const months = Object.keys(datesByMonth).sort();
     const monthEndData = [];
     
-    // Generate table: each month shows end-of-previous-month value
+    // Generate table: each month shows end-of-previous-month value (entry price for participants)
     for (let i = 0; i < months.length; i++) {
       const month = months[i];
       
@@ -202,14 +202,32 @@ async function main() {
             month: month,
             date: lastDateOfPrevMonth,
             price: sortedShares[lastDateOfPrevMonth],
-            note: i === months.length - 1 ? "MTD" : null
+            note: null
           });
         }
       }
     }
     
+    // ADD NEXT MONTH: Last day of current month = entry price for next month's participants
+    const lastMonth = months[months.length - 1];
+    const lastMonthDates = datesByMonth[lastMonth].sort();
+    const lastDateOverall = lastMonthDates[lastMonthDates.length - 1];
+    
+    // Calculate next month
+    const lastDate = new Date(lastDateOverall);
+    const nextMonth = new Date(lastDate);
+    nextMonth.setMonth(nextMonth.getMonth() + 1);
+    const nextMonthStr = `${nextMonth.getFullYear()}-${(nextMonth.getMonth() + 1).toString().padStart(2, '0')}`;
+    
+    monthEndData.push({
+      month: nextMonthStr,
+      date: lastDateOverall,
+      price: sortedShares[lastDateOverall],
+      note: "Next month entry price"
+    });
+    
     fs.writeFileSync('lib/month-end-data.json', JSON.stringify(monthEndData, null, 2));
-    console.log(`📅 Month-end table: ${monthEndData.length} entries written`);
+    console.log(`📅 Month-end table: ${monthEndData.length} entries written (including next month)`);
     
   } catch (error) {
     console.error('❌ Sync failed:', error);
