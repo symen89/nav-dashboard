@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, Area, AreaChart } from 'recharts';
-
-// Data will be loaded from API
-let SHARE_PRICES: Record<string, number> = {};
-let CCI30_DATA: Record<string, number> = {};
+import { SHARE_PRICES, CCI30_DATA, CONFIG } from '@/lib/data';
 
 // Portfolio Holdings (snapshot from Octav API - updated manually to save credits)
 // Percentages calculated based on USD values at time of snapshot
@@ -98,52 +95,7 @@ const STAT_TOOLTIPS: Record<string, string> = {
 };
 
 export default function SharePriceDashboard() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const response = await fetch('/api/data');
-        if (!response.ok) throw new Error('Failed to fetch data');
-        const data = await response.json();
-        
-        // Use NAV data directly from adam-nav-api via the sync script
-        // The API now returns correct share prices scaled to match historical format
-        const scaleFactor = data.config?.scale_factor || 0.003588916698305968;
-        SHARE_PRICES = {};
-        
-        // Fetch share prices directly from adam-nav-api
-        try {
-          const navResponse = await fetch('https://adam-nav-api.vercel.app/api/nav-history');
-          const navData = await navResponse.json();
-          
-          if (navData.ok && navData.history) {
-            // Use actual share prices from adam-nav-api
-            navData.history.forEach((entry: any) => {
-              SHARE_PRICES[entry.date] = entry.share_price_eur;
-            });
-          }
-        } catch (err) {
-          console.warn('Failed to fetch direct share prices, using scaled data');
-          // Fallback to scaled data if direct API fails
-          Object.entries(data.nav).forEach(([date, navValue]: [string, any]) => {
-            SHARE_PRICES[date] = navValue / scaleFactor / 1000;
-          });
-        }
-
-        CCI30_DATA = data.cci30 || {};
-        setIsLoading(false);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
-        setIsLoading(false);
-      }
-    };
-    
-    loadData();
-  }, []);
-
-  const allDates = useMemo(() => Object.keys(SHARE_PRICES).sort(), [isLoading]);
+  const allDates = useMemo(() => Object.keys(SHARE_PRICES).sort(), []);
 
   const [view, setView] = useState('both');
   const [showTable, setShowTable] = useState(true);
@@ -341,30 +293,6 @@ export default function SharePriceDashboard() {
   const formatEUR = (v: number) => `€${v.toFixed(2)}`;
   const formatPct = (v: number) => `${v >= 0 ? '+' : ''}${v.toFixed(2)}%`;
   const formatDate = (d: string) => new Date(d).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' });
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-[#0f151b] flex items-center justify-center">
-        <div className="text-white text-lg">Loading NAV data...</div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-[#0f151b] flex items-center justify-center">
-        <div className="text-red-400 text-lg">Error loading data: {error}</div>
-      </div>
-    );
-  }
-
-  if (allDates.length === 0) {
-    return (
-      <div className="min-h-screen bg-[#0f151b] flex items-center justify-center">
-        <div className="text-white text-lg">No data available</div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen text-white bg-[#0f151b]">
