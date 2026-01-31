@@ -11,16 +11,20 @@ export async function GET() {
 
     // Try to fetch latest NAV
     try {
-      const navResponse = await fetch('https://adam-nav-api.vercel.app/api/nav', { 
+      const navResponse = await fetch('https://adam-nav-api.vercel.app/api/nav-history', { 
         cache: 'no-store',
         next: { revalidate: 3600 } // Cache for 1 hour
       });
       if (navResponse.ok) {
         const data = await navResponse.json();
-        if (data.ok && data.gav_eur) {
-          const today = new Date().toISOString().split('T')[0];
+        if (data.ok && data.history && data.history.length > 0) {
+          const latest = data.history[data.history.length - 1];
+          const today = latest.date;
+          const sharePrice = latest.share_price_eur;
           // Scale the new value to match historical data
-          navData[today] = Math.round(data.gav_eur * scaleFactor * 10000) / 10000;
+          if (sharePrice && today > CONFIG.last_historic_date) {
+            navData[today] = Math.round(sharePrice * scaleFactor * 1000 * 10000) / 10000;
+          }
         }
       }
     } catch (e) {
