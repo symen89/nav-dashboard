@@ -1,4 +1,4 @@
-// sync-data.js
+// sync-data.js - FIXED VERSION
 // Syncs NAV and CCI30 data to nav-dashboard
 
 const fs = require('fs');
@@ -7,23 +7,17 @@ const CONFIG = {
   // CCI30 data (public)
   cci30Url: 'https://cci30.com/ajax/getIndexHistory.php',
   
+  // NAV data (public API)
+  navApiUrl: 'https://adam-nav-api.vercel.app/api/nav-history',
+  
   // Output paths
   navDataPath: 'lib/nav-data.json',
   cci30DataPath: 'lib/cci30-data.json',
   configPath: 'lib/config.json',
 };
 
-// GitHub token from environment (for private repo access)
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
-
-async function fetchJson(url, useAuth = false) {
-  const headers = { 'Accept': 'application/json' };
-  
-  if (useAuth && GITHUB_TOKEN) {
-    headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
-  }
-  
-  const res = await fetch(url, { headers });
+async function fetchJson(url) {
+  const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
   return res.json();
 }
@@ -34,28 +28,10 @@ async function fetchText(url) {
   return res.text();
 }
 
-async function fetchGitHubFile(owner, repo, path) {
-  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-  const headers = {
-    'Accept': 'application/vnd.github.v3.raw',
-    'User-Agent': 'nav-dashboard-sync',
-  };
-  
-  if (GITHUB_TOKEN) {
-    headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
-  }
-  
-  const res = await fetch(url, { headers });
-  if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
-  
-  const text = await res.text();
-  return JSON.parse(text);
-}
-
 async function getNavData() {
-  console.log('Fetching NAV data...');
+  console.log('Fetching NAV data from adam-nav-api...');
   
-  // Get config for scale factor
+  // Get config for scale factor and last historic date
   const config = JSON.parse(fs.readFileSync(CONFIG.configPath, 'utf8'));
   const scaleFactor = config.scale_factor;
   const lastHistoricDate = config.last_historic_date;
@@ -66,14 +42,17 @@ async function getNavData() {
   // Get current nav-data.json (for historic data before API)
   const currentNavData = JSON.parse(fs.readFileSync(CONFIG.navDataPath, 'utf8'));
   
-  // Get new API data from private repo
-  console.log('Fetching from adam-nav-api (private repo)...');
-  const apiHistory = await fetchGitHubFile('symen89', 'adam-nav-api', 'data/nav-history.json');
+  // Get new API data from public endpoint
+  console.log('Fetching from adam-nav-api.vercel.app...');
+  const apiResponse = await fetchJson(CONFIG.navApiUrl);
+  const apiHistory = apiResponse.history;
+  
+  console.log(`Fetched ${apiHistory.length} entries from API`);
   
   // Start with historic data
   const navData = { ...currentNavData };
   
-  // Add/update API data (scaled)
+  // Add/update API data (scaled to match historic format)
   for (const entry of apiHistory) {
     const date = entry.date;
     const sharePrice = entry.share_price_eur;
@@ -122,11 +101,7 @@ async function getCci30Data() {
 
 async function main() {
   try {
-    console.log('=== NAV Dashboard Data Sync ===\n');
-    
-    if (!GITHUB_TOKEN) {
-      console.warn('Warning: No GITHUB_TOKEN found. Private repo access may fail.\n');
-    }
+    console.log('=== NAV Dashboard Data Sync (FIXED) ===\n');
     
     // Fetch both datasets
     const [navData, cci30Data] = await Promise.all([
