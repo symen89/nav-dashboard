@@ -163,27 +163,48 @@ async function main() {
     console.log(`✅ CCI30: ${cci30Dates[0]} to ${cci30Dates[cci30Dates.length - 1]} (${cci30Dates.length} entries)`);
     console.log(`📈 Latest share price: €${sortedShares[shareDates[shareDates.length - 1]]}`);
     
-    // Generate month-end table data
+    // Generate correct month-end table
     console.log('\nGenerating month-end table...');
+    
+    // Group dates by year-month
+    const datesByMonth = {};
+    shareDates.forEach(date => {
+      const yearMonth = date.substring(0, 7); // "2022-03"
+      if (!datesByMonth[yearMonth]) {
+        datesByMonth[yearMonth] = [];
+      }
+      datesByMonth[yearMonth].push(date);
+    });
+    
+    const months = Object.keys(datesByMonth).sort();
     const monthEndData = [];
     
-    for (let i = 0; i < shareDates.length; i++) {
-      const currentDate = new Date(shareDates[i]);
-      const nextDate = i < shareDates.length - 1 ? new Date(shareDates[i + 1]) : null;
+    // Generate table: each month shows end-of-previous-month value
+    for (let i = 0; i < months.length; i++) {
+      const month = months[i];
       
-      // Is this the last day we have data for this month?
-      const isMonthEnd = !nextDate || 
-                        nextDate.getMonth() !== currentDate.getMonth() || 
-                        nextDate.getFullYear() !== currentDate.getFullYear();
-      
-      if (isMonthEnd) {
-        const yearMonth = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}`;
+      if (month === '2022-03') {
+        // March 2022 starts with 1000
         monthEndData.push({
-          month: yearMonth,
-          date: shareDates[i],
-          price: sortedShares[shareDates[i]],
-          note: i === shareDates.length - 1 ? "MTD" : null
+          month: month,
+          date: shareDates[0],
+          price: 1000.0,
+          note: null
         });
+      } else {
+        // All other months: use last day of previous month
+        const prevMonth = months[i - 1];
+        if (prevMonth && datesByMonth[prevMonth]) {
+          const prevMonthDates = datesByMonth[prevMonth].sort();
+          const lastDateOfPrevMonth = prevMonthDates[prevMonthDates.length - 1];
+          
+          monthEndData.push({
+            month: month,
+            date: lastDateOfPrevMonth,
+            price: sortedShares[lastDateOfPrevMonth],
+            note: i === months.length - 1 ? "MTD" : null
+          });
+        }
       }
     }
     
