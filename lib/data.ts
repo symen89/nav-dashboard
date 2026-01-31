@@ -9,9 +9,9 @@ export const CCI30_DATA: Record<string, number> = cci30DataJson;
 export const MONTH_END_DATA = monthEndDataJson;
 
 export function getAllDates(): string[] {
-  return Object.keys(NAV_DATA).sort();
+  return Object.keys(SHARE_PRICES).sort();
 }
 
-export function getScaleFactor(): number {
-  return CONFIG.scale_factor;
+export function getHistoricCutoff(): string {
+  return HISTORIC_DATA.cutoff;
 }
