@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, Area, AreaChart } from 'recharts';
-import { SHARE_PRICES, CCI30_DATA, CONFIG } from '@/lib/data';
+import { SHARE_PRICES, CCI30_DATA, MONTH_END_DATA } from '@/lib/data';
 
 // Portfolio Holdings (snapshot from Octav API - updated manually to save credits)
 // Percentages calculated based on USD values at time of snapshot
@@ -17,56 +17,7 @@ const PORTFOLIO_HOLDINGS = [
 ];
 const PORTFOLIO_LAST_UPDATED = '2026-01-29';
 
-// Officiële maand-einde NAV (Prijs per Participatie)
-const MONTH_END_NAV = [
-  { month: "2022-03", date: "2022-03-31", price: 1081.14 },
-  { month: "2022-04", date: "2022-04-30", price: 982.76 },
-  { month: "2022-05", date: "2022-05-31", price: 775.59 },
-  { month: "2022-06", date: "2022-06-30", price: 559.99 },
-  { month: "2022-07", date: "2022-07-31", price: 764.59 },
-  { month: "2022-08", date: "2022-08-31", price: 673.76 },
-  { month: "2022-09", date: "2022-09-30", price: 653.67 },
-  { month: "2022-10", date: "2022-10-31", price: 711.56 },
-  { month: "2022-11", date: "2022-11-30", price: 570.49 },
-  { month: "2022-12", date: "2022-12-31", price: 512.68 },
-  { month: "2023-01", date: "2023-01-31", price: 651.93 },
-  { month: "2023-02", date: "2023-02-28", price: 700.46 },
-  { month: "2023-03", date: "2023-03-31", price: 708.99 },
-  { month: "2023-04", date: "2023-04-30", price: 718.11 },
-  { month: "2023-05", date: "2023-05-31", price: 710.63 },
-  { month: "2023-06", date: "2023-06-30", price: 670.91 },
-  { month: "2023-07", date: "2023-07-31", price: 704.70 },
-  { month: "2023-08", date: "2023-08-31", price: 621.21 },
-  { month: "2023-09", date: "2023-09-30", price: 658.23 },
-  { month: "2023-10", date: "2023-10-31", price: 752.04 },
-  { month: "2023-11", date: "2023-11-30", price: 838.01 },
-  { month: "2023-12", date: "2023-12-31", price: 931.10 },
-  { month: "2024-01", date: "2024-01-31", price: 928.08 },
-  { month: "2024-02", date: "2024-02-29", price: 1186.65 },
-  { month: "2024-03", date: "2024-03-31", price: 1263.32 },
-  { month: "2024-04", date: "2024-04-30", price: 1085.46 },
-  { month: "2024-05", date: "2024-05-31", price: 1228.62 },
-  { month: "2024-06", date: "2024-06-30", price: 1079.60 },
-  { month: "2024-07", date: "2024-07-31", price: 1078.65 },
-  { month: "2024-08", date: "2024-08-31", price: 856.06 },
-  { month: "2024-09", date: "2024-09-30", price: 915.87 },
-  { month: "2024-10", date: "2024-10-31", price: 948.57 },
-  { month: "2024-11", date: "2024-11-30", price: 1330.32 },
-  { month: "2024-12", date: "2024-12-31", price: 1296.95 },
-  { month: "2025-01", date: "2025-01-31", price: 1330.99 },
-  { month: "2025-02", date: "2025-02-28", price: 977.54 },
-  { month: "2025-03", date: "2025-03-31", price: 774.58 },
-  { month: "2025-04", date: "2025-04-30", price: 784.35 },
-  { month: "2025-05", date: "2025-05-31", price: 958.98 },
-  { month: "2025-06", date: "2025-06-30", price: 937.21 },
-  { month: "2025-07", date: "2025-07-31", price: 1263.63 },
-  { month: "2025-08", date: "2025-08-31", price: 1337.26 },
-  { month: "2025-09", date: "2025-09-30", price: 1311.45 },
-  { month: "2025-10", date: "2025-10-30", price: 1212.64 },
-  { month: "2025-11", date: "2025-11-30", price: 923.36 },
-  { month: "2025-12", date: "2025-12-31", price: 874.63 },
-  { month: "2026-01", date: "2026-01-29", price: 861.81, note: "MTD" },
-];
+// Month-end data is now loaded from MONTH_END_DATA
 
 const MONTH_NAMES = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
 
@@ -280,8 +231,8 @@ export default function SharePriceDashboard() {
 
   // Group month-end data by year for table
   const navByYear = useMemo(() => {
-    const years: Record<string, Record<number, typeof MONTH_END_NAV[0]>> = {};
-    MONTH_END_NAV.forEach(item => {
+    const years: Record<string, Record<number, any>> = {};
+    MONTH_END_DATA.forEach((item: any) => {
       const year = item.month.split('-')[0];
       if (!years[year]) years[year] = {};
       const monthIdx = parseInt(item.month.split('-')[1]) - 1;
