@@ -1,5 +1,5 @@
 {
-  "comment": "Historic share price data from Google Sheets - hardfixed, never changes",
+  "comment": "Historic share price data from Google Sheets - NEVER CHANGE THIS DATA",
   "source": "https://docs.google.com/spreadsheets/d/1zet2Uz0-wTB1LOEjrvEBuj5rywjwNw0t3VvF8K0VRYk/",
   "cutoff": "2025-12-01",
   "data": {

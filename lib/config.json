@@ -1,4 +1,5 @@
 {
+  "comment": "DO NOT USE SCALE FACTOR - historic data is already in correct EUR values",
   "scale_factor": 1,
   "last_historic_date": "2025-12-01"
 }
