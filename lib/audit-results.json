@@ -1,0 +1,431 @@
+{
+  "summary": {
+    "totalDailyEntries": 1429,
+    "dateRange": "2022-03-07 to 2026-02-02",
+    "monthEndEntries": 48,
+    "consistencyIssues": 46,
+    "missingDays": 0,
+    "anomalies": 1
+  },
+  "consistencyIssues": [
+    {
+      "type": "MISSING_IN_DAILY",
+      "month": "2022-03",
+      "date": "2022-03-01",
+      "monthEndPrice": 1000,
+      "dailyPrice": null
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2022-04",
+      "date": "2022-03-31",
+      "monthEndPrice": 1081.1446,
+      "dailyPrice": 1092.8421511090526,
+      "diffPct": "1.0820"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2022-05",
+      "date": "2022-04-30",
+      "monthEndPrice": 982.7628,
+      "dailyPrice": 902.1313050351524,
+      "diffPct": "8.2046"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2022-06",
+      "date": "2022-05-31",
+      "monthEndPrice": 775.5883,
+      "dailyPrice": 746.1713407085587,
+      "diffPct": "3.7929"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2022-07",
+      "date": "2022-06-30",
+      "monthEndPrice": 559.9945,
+      "dailyPrice": 524.4732090320758,
+      "diffPct": "6.3431"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2022-08",
+      "date": "2022-07-31",
+      "monthEndPrice": 764.5918,
+      "dailyPrice": 699.7658463463823,
+      "diffPct": "8.4785"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2022-09",
+      "date": "2022-08-31",
+      "monthEndPrice": 673.7584,
+      "dailyPrice": 622.8614736568617,
+      "diffPct": "7.5542"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2022-10",
+      "date": "2022-09-30",
+      "monthEndPrice": 653.672,
+      "dailyPrice": 579.405882217004,
+      "diffPct": "11.3614"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2022-11",
+      "date": "2022-10-31",
+      "monthEndPrice": 711.5646,
+      "dailyPrice": 642.6630641741094,
+      "diffPct": "9.6831"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2022-12",
+      "date": "2022-11-30",
+      "monthEndPrice": 570.4946,
+      "dailyPrice": 566.7499416361266,
+      "diffPct": "0.6564"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-01",
+      "date": "2022-12-31",
+      "monthEndPrice": 512.6782,
+      "dailyPrice": 499.6791305419085,
+      "diffPct": "2.5355"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-02",
+      "date": "2023-01-31",
+      "monthEndPrice": 651.9295,
+      "dailyPrice": 654.3916095166943,
+      "diffPct": "0.3777"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-03",
+      "date": "2023-02-28",
+      "monthEndPrice": 700.4628,
+      "dailyPrice": 667.4812695924735,
+      "diffPct": "4.7085"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-04",
+      "date": "2023-03-31",
+      "monthEndPrice": 708.9943,
+      "dailyPrice": 719.2156870980905,
+      "diffPct": "1.4417"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-05",
+      "date": "2023-04-30",
+      "monthEndPrice": 718.1137,
+      "dailyPrice": 708.985321218779,
+      "diffPct": "1.2712"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-06",
+      "date": "2023-05-31",
+      "monthEndPrice": 710.6309,
+      "dailyPrice": 687.6969837546415,
+      "diffPct": "3.2273"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-07",
+      "date": "2023-06-30",
+      "monthEndPrice": 670.9077,
+      "dailyPrice": 699.6977415842058,
+      "diffPct": "4.2912"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-08",
+      "date": "2023-07-31",
+      "monthEndPrice": 704.7033,
+      "dailyPrice": 707.5501601507391,
+      "diffPct": "0.4040"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-09",
+      "date": "2023-08-31",
+      "monthEndPrice": 621.2115,
+      "dailyPrice": 608.6025907619442,
+      "diffPct": "2.0297"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-10",
+      "date": "2023-09-30",
+      "monthEndPrice": 658.2306,
+      "dailyPrice": 649.3816373268075,
+      "diffPct": "1.3444"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-11",
+      "date": "2023-10-31",
+      "monthEndPrice": 752.0363,
+      "dailyPrice": 737.0227272964895,
+      "diffPct": "1.9964"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2023-12",
+      "date": "2023-11-30",
+      "monthEndPrice": 838.0053,
+      "dailyPrice": 849.6688284779033,
+      "diffPct": "1.3918"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-01",
+      "date": "2023-12-31",
+      "monthEndPrice": 931.1029,
+      "dailyPrice": 945.162648832163,
+      "diffPct": "1.5100"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-02",
+      "date": "2024-01-31",
+      "monthEndPrice": 928.075,
+      "dailyPrice": 920.7508857912735,
+      "diffPct": "0.7892"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-03",
+      "date": "2024-02-29",
+      "monthEndPrice": 1186.6536,
+      "dailyPrice": 1212.3973685748408,
+      "diffPct": "2.1694"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-04",
+      "date": "2024-03-31",
+      "monthEndPrice": 1263.3228,
+      "dailyPrice": 1321.8884641068332,
+      "diffPct": "4.6358"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-05",
+      "date": "2024-04-30",
+      "monthEndPrice": 1085.4563,
+      "dailyPrice": 1045.4425547356846,
+      "diffPct": "3.6864"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-06",
+      "date": "2024-05-31",
+      "monthEndPrice": 1228.623,
+      "dailyPrice": 1271.76163668865,
+      "diffPct": "3.5111"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-07",
+      "date": "2024-06-30",
+      "monthEndPrice": 1079.6017,
+      "dailyPrice": 1125.5294220033572,
+      "diffPct": "4.2541"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-08",
+      "date": "2024-07-31",
+      "monthEndPrice": 1078.646,
+      "dailyPrice": 1085.6906684131636,
+      "diffPct": "0.6531"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-09",
+      "date": "2024-08-31",
+      "monthEndPrice": 856.0577,
+      "dailyPrice": 888.0895073884881,
+      "diffPct": "3.7418"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-10",
+      "date": "2024-09-30",
+      "monthEndPrice": 915.8693,
+      "dailyPrice": 941.3234680334307,
+      "diffPct": "2.7792"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-11",
+      "date": "2024-10-31",
+      "monthEndPrice": 948.5729629,
+      "dailyPrice": 935.3972441730166,
+      "diffPct": "1.3890"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2024-12",
+      "date": "2024-11-30",
+      "monthEndPrice": 1330.322986,
+      "dailyPrice": 1365.522405924819,
+      "diffPct": "2.6459"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-01",
+      "date": "2024-12-31",
+      "monthEndPrice": 1296.9453,
+      "dailyPrice": 1275.7358702147585,
+      "diffPct": "1.6353"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-02",
+      "date": "2025-01-31",
+      "monthEndPrice": 1330.992012,
+      "dailyPrice": 1328.9248972241137,
+      "diffPct": "0.1553"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-03",
+      "date": "2025-02-28",
+      "monthEndPrice": 977.5424,
+      "dailyPrice": 936.3259671538577,
+      "diffPct": "4.2163"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-04",
+      "date": "2025-03-31",
+      "monthEndPrice": 774.5776,
+      "dailyPrice": 812.0793586591973,
+      "diffPct": "4.8416"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-05",
+      "date": "2025-04-30",
+      "monthEndPrice": 784.3452049,
+      "dailyPrice": 849.2729910357446,
+      "diffPct": "8.2780"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-06",
+      "date": "2025-05-31",
+      "monthEndPrice": 958.9757,
+      "dailyPrice": 1037.826603626991,
+      "diffPct": "8.2224"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-07",
+      "date": "2025-06-30",
+      "monthEndPrice": 937.2079,
+      "dailyPrice": 1033.208430270256,
+      "diffPct": "10.2432"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-08",
+      "date": "2025-07-31",
+      "monthEndPrice": 1263.634333,
+      "dailyPrice": 1337.0358011699038,
+      "diffPct": "5.8088"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-09",
+      "date": "2025-08-31",
+      "monthEndPrice": 1337.26209,
+      "dailyPrice": 1485.7959567219168,
+      "diffPct": "11.1073"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-10",
+      "date": "2025-09-30",
+      "monthEndPrice": 1311.452412,
+      "dailyPrice": 1434.5554066892032,
+      "diffPct": "9.3868"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-11",
+      "date": "2025-10-30",
+      "monthEndPrice": 1212.637348,
+      "dailyPrice": 1292.7554721385432,
+      "diffPct": "6.6069"
+    },
+    {
+      "type": "PRICE_MISMATCH",
+      "month": "2025-12",
+      "date": "2025-11-30",
+      "monthEndPrice": 923.3575012,
+      "dailyPrice": 1030.9048498777793,
+      "diffPct": "11.6474"
+    }
+  ],
+  "missingDays": [],
+  "anomalies": [
+    {
+      "date": "2025-05-08",
+      "prevDate": "2025-05-07",
+      "prevPrice": 853.5084915700498,
+      "currPrice": 987.0357396882272,
+      "changePct": "15.64"
+    }
+  ],
+  "crossCheckSamples": [
+    {
+      "date": "2022-06-30",
+      "price": 524.4732090320758
+    },
+    {
+      "date": "2022-12-31",
+      "price": 499.6791305419085
+    },
+    {
+      "date": "2023-06-30",
+      "price": 699.6977415842058
+    },
+    {
+      "date": "2023-12-31",
+      "price": 945.162648832163
+    },
+    {
+      "date": "2024-03-31",
+      "price": 1321.8884641068332
+    },
+    {
+      "date": "2024-06-30",
+      "price": 1125.5294220033572
+    },
+    {
+      "date": "2024-12-31",
+      "price": 1275.7358702147585
+    },
+    {
+      "date": "2025-06-30",
+      "price": 1033.208430270256
+    },
+    {
+      "date": "2025-12-31",
+      "price": 874.6345588797551
+    },
+    {
+      "date": "2026-02-02",
+      "price": 690.788286837581
+    }
+  ]
+}
